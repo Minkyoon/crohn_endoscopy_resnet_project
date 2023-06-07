@@ -34,7 +34,9 @@ transform = transforms.Compose([
     transforms.ToTensor(), 
     transforms.RandomHorizontalFlip(),   
     transforms.RandomVerticalFlip(),     
-    transforms.RandomRotation(30), 
+    transforms.RandomRotation(30),
+     # 이미지를 10% 만큼 랜덤하게 이동
+      # 50% 확률로 이미지에 원근 변환 적용 
     
 ])
 
@@ -152,15 +154,12 @@ class CovidResNet(nn.Module):
 		"""
         super(CovidResNet, self).__init__()
        
-        model = models.resnet50(pretrained=True)
+        model = models.resnet50(pretrained=False)
         num_ftrs = model.fc.in_features
         self.num_ftrs = num_ftrs
         
         
-        for name, param in model.named_parameters():
-            if 'layer2' in name:
-                break
-            param.requires_grad = False
+
 
             
 
@@ -231,11 +230,12 @@ model
 # 학습 진행에 필요한 hyperparameter 
 
 learning_rate = 0.00001
-train_epoch   = 100
+train_epoch   = 200
 
 # optimizer 
+weight_decay = 0.001  
+opt = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
 
-opt     = torch.optim.Adam(model.parameters(), lr = learning_rate)
 loss_fn = torch.nn.CrossEntropyLoss()
 
 import copy
@@ -378,7 +378,7 @@ for epo in range(train_epoch):
 
 best_model = model.load_state_dict(best_model_wts)
 model_best.load_state_dict(best_model_wts)
-torch.save(model_best, 'resnet50_epoch100_trans.pt')
+torch.save(model_best, 'resnet50_epoch100_trans3.pt')
 import matplotlib.pyplot as plt
 
 # 학습 곡선 그리기
@@ -398,7 +398,7 @@ def plot_loss_curve(loss_history_train, loss_history_val, save_path):
 
 # 학습이 끝난 후에 학습 곡선을 그립니다.
 # 이미지 저장 경로 설정
-save_path = 'loss_curve.png'  # 원하는 경로와 파일명으로 변경하세요.
+save_path = 'loss_curve3.png'  # 원하는 경로와 파일명으로 변경하세요.
 plot_loss_curve(loss_history_train, loss_history_val, save_path)
 
 # """# 모델 테스트 (model testing)"""
@@ -421,7 +421,7 @@ y_score = []
 
 
 
-model = torch.load('resnet50_epoch100_trans.pt')
+model = torch.load('resnet50_epoch100_trans3.pt')
 model.eval()
 for i, (v_i, label) in enumerate(test_loader):
     # input data gpu에 올리기 
@@ -479,7 +479,7 @@ plt.plot(fpr, tpr, label = "Area under ROC = {:.4f}".format(roc_score))
 plt.legend(loc = 'best')
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.savefig('roc.png')
+plt.savefig('roc3.png')
 plt.show()
 plt.close()
 
@@ -493,13 +493,13 @@ sns.heatmap(conf_matrix, annot=True, fmt='d',ax = ax, cmap = 'Blues'); #annot=Tr
 ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels'); 
 ax.set_title('Confusion Matrix'); 
 ax.xaxis.set_ticklabels(['0', '1']); ax.yaxis.set_ticklabels(['0', '1']);
-plt.savefig('confusition_anemia.png')
+plt.savefig('confusition_anemia3.png')
 plt.close()
 
 result_string = ('Validation, Accuracy: ' + str(accuracy)[:7] + ', Sensitivity: ' 
       + str(sensitivity)[:7] + ', Specificity: ' + str(f"{specificity}")[:7] 
       + ', ROC Score: ' + str(roc_score)[:7])
-with open('results.txt', 'w') as f:
+with open('results3.txt', 'w') as f:
     f.write(result_string)
 
 

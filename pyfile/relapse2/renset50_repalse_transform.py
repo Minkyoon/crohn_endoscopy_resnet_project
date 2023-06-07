@@ -73,9 +73,9 @@ class CustomImageDataset(Dataset):
         return image, label
 
 # 사용자 정의 Dataset 클래스를 이용하여 데이터셋을 로드합니다.
-train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/train.csv', transform=transform)
-test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/test.csv', transform=transform_valid)
-valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/valid.csv', transform=transform_valid)
+train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse2/train.csv', transform=transform)
+test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse2/test.csv', transform=transform_valid)
+valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse2/valid.csv', transform=transform_valid)
 
     
 
