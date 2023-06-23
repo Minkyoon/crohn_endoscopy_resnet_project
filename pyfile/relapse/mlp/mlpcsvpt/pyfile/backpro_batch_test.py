@@ -2,7 +2,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset, DataLoader, Subset
 from torchvision import datasets, transforms
 import torch.utils.data as data
 import torch.optim as optim
@@ -14,6 +14,16 @@ import pandas as pd
 from topk.svm import SmoothTop1SVM
 import matplotlib.pyplot as plt
 from PIL import Image
+import argparse
+import copy
+from sklearn.metrics import classification_report, roc_auc_score, roc_curve, confusion_matrix
+
+
+
+parser = argparse.ArgumentParser(description='bath')
+parser.add_argument('--batch', type=int, default=1, 
+                    help='batch')
+args = parser.parse_args() 
 
 
 
@@ -119,7 +129,6 @@ class CLAM_SB(nn.Module):
         logits = logits.cpu()
         all_targets = all_targets.cpu()        
         instance_loss = self.instance_loss_fn(logits, all_targets)
-        print('이거 까지 출력되나?')
         return instance_loss, all_preds, all_targets
     
     #instance-level evaluation for out-of-the-class attention branch
@@ -153,9 +162,7 @@ class CLAM_SB(nn.Module):
                 inst_label = inst_labels[i].item()
                 classifier = self.instance_classifiers[i]
                 if inst_label == 1: #in-the-class:
-                    print("요거 요거 요거 되?")
                     instance_loss, preds, targets = self.inst_eval(A, h, classifier)
-                    print("요거 요거 안되지?")
                     all_preds.extend(preds.cpu().numpy())
                     all_targets.extend(targets.cpu().numpy())
                 else: #out-of-the-class
@@ -339,15 +346,11 @@ class IntegratedModel(nn.Module):
         x = x.float().to(device)  # Convert to float
         h = self.features(x).view(batch_size, num_images, -1)
         h = h.squeeze().to(device)
-      #  print(h)
-       # print(h.shape)
+
         
         # CLAM
         label=label.to(device)
-        print(label.device)
-        print(h.device)
-        find_model = next(self.clam.parameters()).device
-        print(find_model)
+
         
         
         logits, Y_prob, Y_hat, A_raw, results_dict = self.clam(h, label=label)
@@ -357,7 +360,39 @@ class IntegratedModel(nn.Module):
 
 # 데이터 로더 생성
 dataset = CustomDataset(csv_file="/home/minkyoon/crom/pyfile/relapse/mlp/mlpcsvpt/pyfile/test1.csv")
-data_loader = DataLoader(dataset, batch_size=1, shuffle=False)
+indices = list(range(20))
+dataset = Subset(dataset, indices)
+batch=args.batch
+print(batch)
+# if batch >= 2 :
+#     def custom_collate_fn(batch):
+#         images = [item[0] for item in batch]
+#         labels = torch.tensor([item[1] for item in batch])
+#         print(images)
+#         return images, labels
+#     data_loader = DataLoader(dataset, batch_size=batch, shuffle=False, collate_fn=custom_collate_fn)
+# else:    
+#     data_loader = DataLoader(dataset, batch_size=batch, shuffle=False)
+
+dataset_size = len(dataset)
+print(dataset_size)
+val_test_size = int(dataset_size * 0.2)  # total size for validation and test
+train_size= dataset_size - val_test_size
+val_size = val_test_size //2
+test_size = val_test_size - val_size
+
+train_size = dataset_size - val_test_size
+
+train_dataset, val_dataset, test_dataset = data.random_split(dataset, [train_size, val_size, test_size])
+
+def custom_collate_fn(batch):
+    images = [item[0] for item in batch]
+    labels = torch.tensor([item[1] for item in batch])
+    return images, labels
+train_dataloader = DataLoader(train_dataset, batch_size=batch, shuffle=False, collate_fn=custom_collate_fn)
+val_dataloader = DataLoader(val_dataset, batch_size=batch, shuffle=False, collate_fn=custom_collate_fn)
+test_dataloader = DataLoader(test_dataset, batch_size=batch, shuffle=False, collate_fn=custom_collate_fn)
+
 
 # 통합 모델 초기화
 device = torch.device("cuda:1" )
@@ -367,42 +402,85 @@ model2 = IntegratedModel(feature_extractor=model, clam_model=CLAM_SB()).to(devic
 # 손실 함수 및 옵티마이저 정의
 #criterion = nn.CrossEntropyLoss()
 bag_criterion = SmoothTop1SVM(n_classes = 2)
-optimizer = torch.optim.SGD(model2.parameters(), lr=0.01)
-train_loss = 0.
-train_error = 0.
-train_inst_loss = 0.
-inst_count = 0
+optimizer = torch.optim.Adam(model2.parameters(), lr=0.01)
 bag_weight = 0.7
 # 학습 루프
+float2str = lambda x:'%0.4f'%x
 num_epochs = 1
+model_best = copy.deepcopy(model)
+
 for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(data_loader):
-        images, labels = images.to(device), labels.to(device)
-        
-        
+    for i, (images, labels) in enumerate(train_dataloader):
         # Forward pass
-        logits, Y_prob, Y_hat, A_raw, instance_dict = model2(images, label=labels)
-        logits=logits.cpu()
-        labels=labels.cpu()
-        print(logits)
-        print(labels)
-        loss = bag_criterion(logits, labels)
-        loss_value=loss.item()
+
+        total_loss = 0
         
-        instance_loss = instance_dict['instance_loss']
-        inst_count+=1
-        instance_loss_value = instance_loss.item()
-        train_inst_loss += instance_loss_value
-        
-        total_loss = bag_weight * loss + (1-bag_weight) * instance_loss 
-        
+        for j in range(len(images)):
+            single_image_batch, single_label_batch = images[j].unsqueeze(0).to(device), labels[j].unsqueeze(0).to(device)
+            logits, Y_prob, Y_hat, A_raw, instance_dict = model2(single_image_batch, label=single_label_batch)
+
+            loss = bag_criterion(logits.cpu(), single_label_batch.cpu())
+            instance_loss = instance_dict['instance_loss']
+            total_loss += bag_weight * loss + (1-bag_weight) * instance_loss
         
         # Backward and optimize
         optimizer.zero_grad()
         total_loss.backward()
         optimizer.step()
         
-        if (i+1) % 10 == 0:
-            print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(data_loader)}], Loss: {total_loss.item()}')
+        
+        print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(train_dataloader)}], Loss: {total_loss.item()}')
+    with torch.set_grad_enabled(False):
+        y_pred = []
+        y_score = []
+        y_label = []
+        model.eval()
+        
+        for i, (images, labels) in enumerate(val_dataloader):
+            total_loss = 0
+        
+            for j in range(len(images)):
+                single_image_batch, single_label_batch = images[j].unsqueeze(0).to(device), labels[j].unsqueeze(0).to(device)
+                logits, Y_prob, Y_hat, A_raw, instance_dict = model2(single_image_batch, label=single_label_batch)
+
+                loss = bag_criterion(logits.cpu(), single_label_batch.cpu())
+                instance_loss = instance_dict['instance_loss']
+                total_loss += bag_weight * loss + (1-bag_weight) * instance_loss
+            pred = logits.argmax(dim=1, keepdim=True)
+            score = nn.Softmax(dim = 1)(logits)[:,1]
+            pred = pred.cpu().numpy()
+            print(pred)
+            score = score.cpu().numpy()
+            label = labels.cpu().numpy()
+            print(label)
+            y_label = y_label + label.flatten().tolist()
+            y_pred = y_pred + pred.flatten().tolist()
+            y_score = y_score + score.flatten().tolist()
+    print(y_label)
+    print(y_pred)        
+    classification_metrics = classification_report(y_label, y_pred,
+                        target_names = ['0', '1'],
+                        output_dict= True)        
+    sensitivity = classification_metrics['0']['recall']
+    # specificity is the recall of the negative class 
+    specificity = classification_metrics['1']['recall']
+    # accuracy
+    accuracy = classification_metrics['accuracy']
+    # confusion matrix
+    conf_matrix = confusion_matrix(y_label, y_pred)
+    # roc score
+    roc_score = roc_auc_score(y_label, y_score)
+    lst = ["epoch " + str(epoch)] + list(map(float2str,[accuracy, sensitivity, specificity, roc_score]))
+    if accuracy > max_acc:
+
+        best_model_wts = copy.deepcopy(model.state_dict())
+        max_acc = accuracy 
+        
+        print('Validation at Epoch '+ str(epoch + 1) + ' , Accuracy: ' + str(accuracy)[:7] + ' , sensitivity: '\
+						 + str(sensitivity)[:7] + ', specificity: ' + str(f"{specificity}") +' , roc_score: '+str(roc_score)[:7])       
+
+best_model = model2.load_state_dict(best_model_wts)
+model_best.load_state_dict(best_model_wts)
+torch.save(model_best, 'resnet50_epoch100_trans2.pt')
 
 print('Finished Training')
