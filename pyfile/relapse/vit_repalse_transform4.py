@@ -9,9 +9,10 @@ from torchvision import datasets, transforms
 import torch.utils.data as data
 import pandas as pd
 from torch.utils.data import Dataset
+import torch.nn.functional as F
 
 # 디바이스 설정 (GPU 사용 가능하면 GPU 사용하도록)
-device = torch.device("cuda:10" )
+device = torch.device("cuda:3" )
 
 random_seed = 2022
 
@@ -28,21 +29,21 @@ torch.backends.cudnn.benchmark = False
 
 
 
-# 데이터를 처리하기 위한 transform을 설정합니다.
-# ToTensor를 사용해 numpy array를 Tensor로 바꿔줍니다.
 transform = transforms.Compose([
-       # np.array를 PIL 이미지로 변환. 일부 변환들은 PIL 이미지에서만 작동합니다.
-    transforms.RandomHorizontalFlip(),   # 50% 확률로 이미지를 수평으로 뒤집습니다.
-    transforms.RandomVerticalFlip(),     # 50% 확률로 이미지를 수직으로 뒤집습니다.
-    transforms.RandomRotation(30),       # -30에서 30도 사이의 각도로 이미지를 회전시킵니다.
+      
+      
     transforms.ToTensor(), 
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]) # PIL 이미지를 PyTorch 텐서로 다시 변환합니다.
-    # 기본적인 정규화. 값들은 일반적으로 사용되는 값입니다. 필요에 따라 조절하실 수 있습니다.
+    transforms.RandomHorizontalFlip(),   
+    transforms.RandomVerticalFlip(),     
+    transforms.RandomRotation(30),
+     # 이미지를 10% 만큼 랜덤하게 이동
+      # 50% 확률로 이미지에 원근 변환 적용 
+    
 ])
 
 transform_valid = transforms.Compose([
     transforms.ToTensor(), 
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])        
+           
     
 ])
 
@@ -63,11 +64,16 @@ class CustomImageDataset(Dataset):
         if isinstance(image, tuple):
             image = image[0]
             
-        image = (image * 255).astype(np.uint8)
+        
+        
         
         if self.transform:
-            image = Image.fromarray(image)
+           
+            
             image = self.transform(image)
+            image = image.unsqueeze(0)
+            image = F.interpolate(image, size=(224, 224))
+            image= image.squeeze(0)
             
 
         return image, label
@@ -82,7 +88,7 @@ valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/
 # DataLoader을 위한 hyperparameter 설정
 
 train_params = {
-    'batch_size': 64,
+    'batch_size': 32,
     'shuffle': True,
     'num_workers': 1,
     'drop_last': False}
@@ -90,7 +96,7 @@ train_params = {
     #num workers?
 
 valid_params = {
-    'batch_size': 64,
+    'batch_size': 32,
     'shuffle': False,
     'num_workers': 1,
     'drop_last': False}
@@ -139,45 +145,35 @@ config = {
     "cls_hidden_dims" : [1024, 512, 256]
     }
 
+import timm
 
-class CovidResNet(nn.Module):
-    """pretrain 된 ResNet을 이
-    """
+class ViT(nn.Module):
+    """pretrain 된 Vision Transformer를 사용하는 모델"""
     
     def __init__(self):
-        """
-		Args:
-			base_model : resnet18 / resnet50
-			config: 모델 설정 값
-		"""
-        super(CovidResNet, self).__init__()
+        super(ViT, self).__init__()
        
-        model = models.resnet50(pretrained=True)
-        num_ftrs = model.fc.in_features
+        # pretrained=True로 설정하여 pretrained model을 불러옵니다.
+        self.model = timm.create_model('vit_base_patch16_224', pretrained=True)
+        
+        # ViT의 마지막 layer의 output dimension을 가져옵니다.
+        num_ftrs = self.model.head.in_features
         self.num_ftrs = num_ftrs
-        
-        
-        for name, param in model.named_parameters():
-            if 'layer2' in name:
-                break
-            param.requires_grad = False
 
-            
-
-        self.features = nn.Sequential(*list(model.children())[:-1])
+        # ViT의 마지막 layer를 원하는 task에 맞게 변경합니다.
+        # 여기서는 binary classification 문제이므로, out_features=2로 설정합니다.
+        self.model.head = nn.Linear(num_ftrs, num_ftrs)
 
     def forward(self, x):
-        x = self.features(x)
-        b = x.size(0)
-        x = x.view(b, -1)
-
+        x = self.model(x)
         return x
 
 
 
 
 
-model_image = CovidResNet()
+
+model_image = ViT()
 model_image
 
 class Classifier(nn.Sequential):
@@ -230,12 +226,13 @@ model
 
 # 학습 진행에 필요한 hyperparameter 
 
-learning_rate = 0.0001
-train_epoch   = 100
+learning_rate = 0.00001
+train_epoch   = 200
 
 # optimizer 
+weight_decay = 0.001  
+opt = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
 
-opt     = torch.optim.Adam(model.parameters(), lr = learning_rate)
 loss_fn = torch.nn.CrossEntropyLoss()
 
 import copy
@@ -378,7 +375,7 @@ for epo in range(train_epoch):
 
 best_model = model.load_state_dict(best_model_wts)
 model_best.load_state_dict(best_model_wts)
-torch.save(model_best, '/home/minkyoon/crom/pyfile/relapse/resnet50_epoch100.pt')
+torch.save(model_best, 'vit_epoch100_trans4.pt')
 import matplotlib.pyplot as plt
 
 # 학습 곡선 그리기
@@ -391,13 +388,14 @@ def plot_loss_curve(loss_history_train, loss_history_val, save_path):
     plt.legend()
     plt.grid(True)
     plt.savefig(save_path)  # 이미지 저장
+    plt.close()
     
     
 # ... training code ...
 
 # 학습이 끝난 후에 학습 곡선을 그립니다.
 # 이미지 저장 경로 설정
-save_path = 'loss_curve.png'  # 원하는 경로와 파일명으로 변경하세요.
+save_path = 'vit.png'  # 원하는 경로와 파일명으로 변경하세요.
 plot_loss_curve(loss_history_train, loss_history_val, save_path)
 
 # """# 모델 테스트 (model testing)"""
@@ -420,7 +418,7 @@ y_score = []
 
 
 
-model = torch.load('/home/minkyoon/crom/pyfile/relapse/resnet50_epoch100.pt')
+model = torch.load('vit_epoch100_trans4.pt')
 model.eval()
 for i, (v_i, label) in enumerate(test_loader):
     # input data gpu에 올리기 
@@ -478,8 +476,9 @@ plt.plot(fpr, tpr, label = "Area under ROC = {:.4f}".format(roc_score))
 plt.legend(loc = 'best')
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.savefig('roc.png')
+plt.savefig('vit.png')
 plt.show()
+plt.close()
 
 import seaborn as sns
 
@@ -491,7 +490,13 @@ sns.heatmap(conf_matrix, annot=True, fmt='d',ax = ax, cmap = 'Blues'); #annot=Tr
 ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels'); 
 ax.set_title('Confusion Matrix'); 
 ax.xaxis.set_ticklabels(['0', '1']); ax.yaxis.set_ticklabels(['0', '1']);
-plt.savefig('confusition_anemia.png')
+plt.savefig('vit.png')
+plt.close()
 
+result_string = ('Validation, Accuracy: ' + str(accuracy)[:7] + ', Sensitivity: ' 
+      + str(sensitivity)[:7] + ', Specificity: ' + str(f"{specificity}")[:7] 
+      + ', ROC Score: ' + str(roc_score)[:7])
+with open('vit.txt', 'w') as f:
+    f.write(result_string)
 
 

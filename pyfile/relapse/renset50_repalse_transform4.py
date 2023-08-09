@@ -11,7 +11,7 @@ import pandas as pd
 from torch.utils.data import Dataset
 
 # 디바이스 설정 (GPU 사용 가능하면 GPU 사용하도록)
-device = torch.device("cuda:10" )
+device = torch.device("cuda:0" )
 
 random_seed = 2022
 
@@ -28,21 +28,21 @@ torch.backends.cudnn.benchmark = False
 
 
 
-# 데이터를 처리하기 위한 transform을 설정합니다.
-# ToTensor를 사용해 numpy array를 Tensor로 바꿔줍니다.
 transform = transforms.Compose([
-       # np.array를 PIL 이미지로 변환. 일부 변환들은 PIL 이미지에서만 작동합니다.
-    transforms.RandomHorizontalFlip(),   # 50% 확률로 이미지를 수평으로 뒤집습니다.
-    transforms.RandomVerticalFlip(),     # 50% 확률로 이미지를 수직으로 뒤집습니다.
-    transforms.RandomRotation(30),       # -30에서 30도 사이의 각도로 이미지를 회전시킵니다.
+      
+      
     transforms.ToTensor(), 
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]) # PIL 이미지를 PyTorch 텐서로 다시 변환합니다.
-    # 기본적인 정규화. 값들은 일반적으로 사용되는 값입니다. 필요에 따라 조절하실 수 있습니다.
+    transforms.RandomHorizontalFlip(),   
+    transforms.RandomVerticalFlip(),     
+    transforms.RandomRotation(30),
+     # 이미지를 10% 만큼 랜덤하게 이동
+      # 50% 확률로 이미지에 원근 변환 적용 
+    
 ])
 
 transform_valid = transforms.Compose([
     transforms.ToTensor(), 
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])        
+           
     
 ])
 
@@ -63,19 +63,21 @@ class CustomImageDataset(Dataset):
         if isinstance(image, tuple):
             image = image[0]
             
-        image = (image * 255).astype(np.uint8)
+        
+        
         
         if self.transform:
-            image = Image.fromarray(image)
+           
+            
             image = self.transform(image)
             
 
         return image, label
 
 # 사용자 정의 Dataset 클래스를 이용하여 데이터셋을 로드합니다.
-train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/train.csv', transform=transform)
-test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/test.csv', transform=transform_valid)
-valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/valid.csv', transform=transform_valid)
+train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/train1.csv', transform=transform)
+test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/test1.csv', transform=transform_valid)
+valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/valid1.csv', transform=transform_valid)
 
     
 
@@ -152,15 +154,12 @@ class CovidResNet(nn.Module):
 		"""
         super(CovidResNet, self).__init__()
        
-        model = models.resnet50(pretrained=True)
+        model = models.resnet50(pretrained=False)
         num_ftrs = model.fc.in_features
         self.num_ftrs = num_ftrs
         
         
-        for name, param in model.named_parameters():
-            if 'layer2' in name:
-                break
-            param.requires_grad = False
+
 
             
 
@@ -230,12 +229,13 @@ model
 
 # 학습 진행에 필요한 hyperparameter 
 
-learning_rate = 0.0001
-train_epoch   = 100
+learning_rate = 0.00001
+train_epoch   = 200
 
 # optimizer 
+weight_decay = 0.001  
+opt = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
 
-opt     = torch.optim.Adam(model.parameters(), lr = learning_rate)
 loss_fn = torch.nn.CrossEntropyLoss()
 
 import copy
@@ -378,7 +378,7 @@ for epo in range(train_epoch):
 
 best_model = model.load_state_dict(best_model_wts)
 model_best.load_state_dict(best_model_wts)
-torch.save(model_best, '/home/minkyoon/crom/pyfile/relapse/resnet50_epoch100.pt')
+torch.save(model_best, 'resnet50_epoch100_trans4.pt')
 import matplotlib.pyplot as plt
 
 # 학습 곡선 그리기
@@ -391,13 +391,14 @@ def plot_loss_curve(loss_history_train, loss_history_val, save_path):
     plt.legend()
     plt.grid(True)
     plt.savefig(save_path)  # 이미지 저장
+    plt.close()
     
     
 # ... training code ...
 
 # 학습이 끝난 후에 학습 곡선을 그립니다.
 # 이미지 저장 경로 설정
-save_path = 'loss_curve.png'  # 원하는 경로와 파일명으로 변경하세요.
+save_path = 'loss_curve4.png'  # 원하는 경로와 파일명으로 변경하세요.
 plot_loss_curve(loss_history_train, loss_history_val, save_path)
 
 # """# 모델 테스트 (model testing)"""
@@ -420,7 +421,7 @@ y_score = []
 
 
 
-model = torch.load('/home/minkyoon/crom/pyfile/relapse/resnet50_epoch100.pt')
+model = torch.load('resnet50_epoch100_trans4.pt')
 model.eval()
 for i, (v_i, label) in enumerate(test_loader):
     # input data gpu에 올리기 
@@ -478,8 +479,9 @@ plt.plot(fpr, tpr, label = "Area under ROC = {:.4f}".format(roc_score))
 plt.legend(loc = 'best')
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.savefig('roc.png')
+plt.savefig('roc4.png')
 plt.show()
+plt.close()
 
 import seaborn as sns
 
@@ -491,7 +493,13 @@ sns.heatmap(conf_matrix, annot=True, fmt='d',ax = ax, cmap = 'Blues'); #annot=Tr
 ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels'); 
 ax.set_title('Confusion Matrix'); 
 ax.xaxis.set_ticklabels(['0', '1']); ax.yaxis.set_ticklabels(['0', '1']);
-plt.savefig('confusition_anemia.png')
+plt.savefig('confusition_anemia4.png')
+plt.close()
 
+result_string = ('Validation, Accuracy: ' + str(accuracy)[:7] + ', Sensitivity: ' 
+      + str(sensitivity)[:7] + ', Specificity: ' + str(f"{specificity}")[:7] 
+      + ', ROC Score: ' + str(roc_score)[:7])
+with open('results4.txt', 'w') as f:
+    f.write(result_string)
 
 

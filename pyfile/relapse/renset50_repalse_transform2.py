@@ -248,6 +248,9 @@ from sklearn.metrics import classification_report, roc_auc_score, roc_curve, con
 
 """### 모델 학습 진횅"""
 
+
+
+
 loss_history_train = []
 loss_history_val = []
 

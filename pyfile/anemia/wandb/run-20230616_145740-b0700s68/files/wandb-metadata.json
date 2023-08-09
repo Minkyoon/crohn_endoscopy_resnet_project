@@ -1,0 +1,257 @@
+{
+    "os": "Linux-5.4.0-125-generic-x86_64-with-glibc2.31",
+    "python": "3.9.16",
+    "heartbeatAt": "2023-06-16T05:57:42.611023",
+    "startedAt": "2023-06-16T05:57:40.077215",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/minkyoon/crom/pyfile/anemia/renset50_anemia_mil.py",
+    "codePath": "pyfile/anemia/renset50_anemia_mil.py",
+    "git": {
+        "remote": "https://github.com/min-program/crohn_endoscopy_resnet_project.git",
+        "commit": "bb8bbef5dc464ffb5259e926a185bb4752c7da9a"
+    },
+    "email": "minkyoon97@gmail.com",
+    "root": "/home/minkyoon/crom",
+    "host": "gpu",
+    "username": "minkyoon",
+    "executable": "/home/minkyoon/anaconda3/bin/python",
+    "cpu_count": 20,
+    "cpu_count_logical": 40,
+    "cpu_freq": {
+        "current": 2.1327749999999988,
+        "min": 1200.0,
+        "max": 2223.475
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2.401,
+            "min": 1200.0,
+            "max": 3100.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.2,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 1.402,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.399,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.2,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 1.435,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        },
+        {
+            "current": 2.199,
+            "min": 1200.0,
+            "max": 2201.0
+        }
+    ],
+    "disk": {
+        "total": 97.87200164794922,
+        "used": 29.548316955566406
+    },
+    "gpu": "Quadro P5000",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "Quadro P5000",
+            "memory_total": 17069309952
+        },
+        {
+            "name": "Quadro P5000",
+            "memory_total": 17069309952
+        },
+        {
+            "name": "Quadro P5000",
+            "memory_total": 17069309952
+        },
+        {
+            "name": "Quadro P5000",
+            "memory_total": 17069309952
+        }
+    ],
+    "memory": {
+        "total": 62.778438568115234
+    }
+}

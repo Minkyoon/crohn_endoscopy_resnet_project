@@ -1,0 +1,20 @@
+torch.Size([64, 3, 225, 225])
+torch.Size([64])
+torch.Size([64, 3, 225, 225])
+torch.Size([64])
+Traceback (most recent call last):
+  File "/home/minkyoon/crom/pyfile/anemia/renset50_anemia_mil.py", line 272, in <module>
+    model = model.to(device)
+  File "/home/minkyoon/anaconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 907, in to
+    return self._apply(convert)
+  File "/home/minkyoon/anaconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/home/minkyoon/anaconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/home/minkyoon/anaconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 578, in _apply
+    module._apply(fn)
+  File "/home/minkyoon/anaconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 601, in _apply
+    param_applied = fn(param)
+  File "/home/minkyoon/anaconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 905, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+KeyboardInterrupt

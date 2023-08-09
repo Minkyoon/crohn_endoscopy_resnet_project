@@ -100,6 +100,7 @@ class SmoothTop1SVM(_SVMLoss):
             loss += self.F_h(x_h, y_h).sum() / x.size(0)
 
         return loss
+    
 
     def get_losses(self):
         self.F_h = F.Top1_Hard_SVM(self.labels, self.alpha)

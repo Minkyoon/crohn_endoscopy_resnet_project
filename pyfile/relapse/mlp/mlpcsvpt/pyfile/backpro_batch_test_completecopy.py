@@ -11,18 +11,26 @@ from torchvision import models
 from utils.utils import initialize_weights
 import numpy as np
 import pandas as pd
-from topk.svm import SmoothTop1SVM
+from utils.svm import SmoothTop1SVM
 import matplotlib.pyplot as plt
 from PIL import Image
 import argparse
 import copy
 from sklearn.metrics import classification_report, roc_auc_score, roc_curve, confusion_matrix
+import seaborn as sns
+#import wandb
 
 
 
-parser = argparse.ArgumentParser(description='bath')
+                   
+                   
+
+
+
+parser = argparse.ArgumentParser(description='batch, epoch')
 parser.add_argument('--batch', type=int, default=1, 
                     help='batch')
+parser.add_argument('--epoch', type=int, default=100 ,help='epoch default=100')
 args = parser.parse_args() 
 
 
@@ -69,10 +77,10 @@ args:
     
 """
 
-
+## 연구에서는 그냥 cross entropy를쓰네
 class CLAM_SB(nn.Module):
     def __init__(self, gate = True, size_arg = "small", dropout = True, k_sample=8, n_classes=2,
-        instance_loss_fn= SmoothTop1SVM(n_classes = 2), subtyping=False):
+        instance_loss_fn= SmoothTop1SVM(n_classes=2), subtyping=False):
         super(CLAM_SB, self).__init__()
         self.size_dict = {"small": [1024, 512, 256], "big": [1024, 512, 384]}
         size = self.size_dict[size_arg]
@@ -96,7 +104,7 @@ class CLAM_SB(nn.Module):
         initialize_weights(self)
 
     def relocate(self):
-        device=torch.device("cuda:1")
+        device=torch.device("cuda:3")
         self.attention_net = self.attention_net.to(device)
         self.classifiers = self.classifiers.to(device)
         self.instance_classifiers = self.instance_classifiers.to(device)
@@ -126,8 +134,8 @@ class CLAM_SB(nn.Module):
         logits = classifier(all_instances)
         all_preds = torch.topk(logits, 1, dim = 1)[1].squeeze(1)
         self.instance_loss_fn=self.instance_loss_fn.to(device)
-        logits = logits.cpu()
-        all_targets = all_targets.cpu()        
+        logits = logits.to(device)
+        all_targets = all_targets.to(device)        
         instance_loss = self.instance_loss_fn(logits, all_targets)
         return instance_loss, all_preds, all_targets
     
@@ -276,7 +284,7 @@ class Classifier(nn.Sequential):
 
 
 
-device = torch.device("cuda:1" )
+device = torch.device("cuda:3" )
 
 model = Classifier(model_image, **config)
 
@@ -339,7 +347,7 @@ class IntegratedModel(nn.Module):
         self.clam=clam_model
         
     
-    def forward(self, x, label=None):
+    def forward(self, x, label=None, instance_loss_fn=None):
         # Feature Extraction
         batch_size, num_images, c, h, w = x.size()
         x = x.view(-1, c, h, w)
@@ -350,18 +358,20 @@ class IntegratedModel(nn.Module):
         
         # CLAM
         label=label.to(device)
-
+        ##만약 crossentropy 쓸거면 바꿔야됨
+        # instance_loss_fn = nn.CrossEntropyLoss()
+        instance_loss_fn = SmoothTop1SVM(n_classes = 2)
+        instance_loss_fn = instance_loss_fn.to(device)
         
-        
-        logits, Y_prob, Y_hat, A_raw, results_dict = self.clam(h, label=label)
+        logits, Y_prob, Y_hat, A_raw, results_dict = self.clam(h, label=label,)
         
         return logits, Y_prob, Y_hat, A_raw, results_dict
 
 
 # 데이터 로더 생성
 dataset = CustomDataset(csv_file="/home/minkyoon/crom/pyfile/relapse/mlp/mlpcsvpt/pyfile/test1.csv")
-indices = list(range(20))
-dataset = Subset(dataset, indices)
+#indices = list(range(20))
+#dataset = Subset(dataset, indices)
 batch=args.batch
 print(batch)
 # if batch >= 2 :
@@ -395,21 +405,28 @@ test_dataloader = DataLoader(test_dataset, batch_size=batch, shuffle=False, coll
 
 
 # 통합 모델 초기화
-device = torch.device("cuda:1" )
+device = torch.device("cuda:3" )
 model2 = IntegratedModel(feature_extractor=model, clam_model=CLAM_SB()).to(device)
 #model2= model2.to(device)
 
 # 손실 함수 및 옵티마이저 정의
 #criterion = nn.CrossEntropyLoss()
-bag_criterion = SmoothTop1SVM(n_classes = 2)
-optimizer = torch.optim.Adam(model2.parameters(), lr=0.01)
+#bag_criterion = SmoothTop1SVM(n_classes = 2)
+bag_criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model2.parameters(), lr=0.0001)
 bag_weight = 0.7
 # 학습 루프
 float2str = lambda x:'%0.4f'%x
-num_epochs = 1
-model_best = copy.deepcopy(model)
+num_epochs = args.epoch  #default 100
+model_best = copy.deepcopy(model2)
+max_acc = 0
+
+train_losses = []
+val_losses = []
 
 for epoch in range(num_epochs):
+    total_train_loss = 0
+    total_val_loss = 0
     for i, (images, labels) in enumerate(train_dataloader):
         # Forward pass
 
@@ -422,6 +439,9 @@ for epoch in range(num_epochs):
             loss = bag_criterion(logits.cpu(), single_label_batch.cpu())
             instance_loss = instance_dict['instance_loss']
             total_loss += bag_weight * loss + (1-bag_weight) * instance_loss
+            total_train_loss += total_loss.item()
+            
+    #        wandb.log({'Train Loss': total_train_loss / len(train_dataloader)})
         
         # Backward and optimize
         optimizer.zero_grad()
@@ -430,6 +450,9 @@ for epoch in range(num_epochs):
         
         
         print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(train_dataloader)}], Loss: {total_loss.item()}')
+        
+    train_losses.append(total_train_loss / len(train_dataloader))
+    
     with torch.set_grad_enabled(False):
         y_pred = []
         y_score = []
@@ -446,16 +469,27 @@ for epoch in range(num_epochs):
                 loss = bag_criterion(logits.cpu(), single_label_batch.cpu())
                 instance_loss = instance_dict['instance_loss']
                 total_loss += bag_weight * loss + (1-bag_weight) * instance_loss
-            pred = logits.argmax(dim=1, keepdim=True)
-            score = nn.Softmax(dim = 1)(logits)[:,1]
-            pred = pred.cpu().numpy()
-            print(pred)
-            score = score.cpu().numpy()
-            label = labels.cpu().numpy()
-            print(label)
-            y_label = y_label + label.flatten().tolist()
-            y_pred = y_pred + pred.flatten().tolist()
-            y_score = y_score + score.flatten().tolist()
+                total_val_loss += total_loss.item()
+
+                # Move the tensors to cpu for numpy conversion
+                pred = logits.argmax(dim=1, keepdim=True).cpu().numpy()
+                score = nn.Softmax(dim = 1)(logits)[:,1].cpu().numpy()
+                label = single_label_batch.cpu().numpy()
+
+                y_label += label.flatten().tolist()
+                y_pred += pred.flatten().tolist()
+                y_score += score.flatten().tolist()
+                
+        # wandb.log({
+        #     'Validation Loss': total_val_loss / len(val_dataloader),
+        #     'Accuracy': accuracy,
+        #     'Sensitivity': sensitivity,
+        #     'Specificity': specificity,
+        #     'ROC AUC': roc_score
+        # })
+                
+        val_losses.append(total_val_loss / len(val_dataloader))
+
     print(y_label)
     print(y_pred)        
     classification_metrics = classification_report(y_label, y_pred,
@@ -473,14 +507,122 @@ for epoch in range(num_epochs):
     lst = ["epoch " + str(epoch)] + list(map(float2str,[accuracy, sensitivity, specificity, roc_score]))
     if accuracy > max_acc:
 
-        best_model_wts = copy.deepcopy(model.state_dict())
+        best_model_wts = copy.deepcopy(model2.state_dict())
         max_acc = accuracy 
         
         print('Validation at Epoch '+ str(epoch + 1) + ' , Accuracy: ' + str(accuracy)[:7] + ' , sensitivity: '\
 						 + str(sensitivity)[:7] + ', specificity: ' + str(f"{specificity}") +' , roc_score: '+str(roc_score)[:7])       
+    
 
-best_model = model2.load_state_dict(best_model_wts)
+model2.load_state_dict(best_model_wts)
+
 model_best.load_state_dict(best_model_wts)
-torch.save(model_best, 'resnet50_epoch100_trans2.pt')
+torch.save(model_best.state_dict(), 'resnet50_epoch100_trans2.pt')
 
 print('Finished Training')
+
+
+def plot_loss_curve(train_losses, val_losses, save_path):
+    plt.figure(figsize=(10,7))
+    plt.plot(train_losses, label='Train')
+    plt.plot(val_losses, label='Validation')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig(save_path)
+    plt.close()
+
+
+save_path = 'loss_curve.png'
+plot_loss_curve(train_losses, val_losses, save_path)
+
+
+
+model2 = IntegratedModel(feature_extractor=model, clam_model=CLAM_SB()).to(device)
+model2.load_state_dict(torch.load('resnet50_epoch100_trans2.pt'))
+
+model2.eval()  # set the model to evaluation mode
+
+y_pred_test = []
+y_score_test = []
+y_label_test = []
+
+with torch.no_grad():  # gradients are not needed for testing
+    for images, labels in test_dataloader:
+        total_loss_test = 0
+        
+        for j in range(len(images)):
+            single_image_batch, single_label_batch = images[j].unsqueeze(0).to(device), labels[j].unsqueeze(0).to(device)
+            logits, Y_prob, Y_hat, A_raw, instance_dict = model2(single_image_batch, label=single_label_batch)
+
+            loss = bag_criterion(logits.cpu(), single_label_batch.cpu())
+            instance_loss = instance_dict['instance_loss']
+            total_loss_test += bag_weight * loss + (1-bag_weight) * instance_loss
+
+            pred = logits.argmax(dim=1, keepdim=True).cpu().numpy()
+            score = nn.Softmax(dim = 1)(logits)[:,1].cpu().numpy()
+            label = single_label_batch.cpu().numpy()
+
+            y_label_test += label.flatten().tolist()
+            y_pred_test += pred.flatten().tolist()
+            y_score_test += score.flatten().tolist()
+
+classification_metrics_test = classification_report(y_label_test, y_pred_test,
+                    target_names = ['0', '1'],
+                    output_dict= True) 
+
+sensitivity_test = classification_metrics_test['0']['recall']
+specificity_test = classification_metrics_test['1']['recall']
+accuracy_test = classification_metrics_test['accuracy']
+conf_matrix_test = confusion_matrix(y_label_test, y_pred_test)
+roc_score_test = roc_auc_score(y_label_test, y_score_test)
+
+print('Testing results: ')
+print('Accuracy: ', accuracy_test)
+print('Sensitivity: ', sensitivity_test)
+print('Specificity: ', specificity_test)
+print('ROC Score: ', roc_score_test)
+print('Confusion matrix: \n', conf_matrix_test)
+
+
+
+
+
+# ROC curve
+fpr_test, tpr_test, _ = roc_curve(y_label_test, y_score_test)
+plt.figure(figsize=(8,8))
+plt.plot(fpr_test, tpr_test, label = "Area under ROC = {:.4f}".format(roc_score_test))
+plt.plot([0, 1], [0, 1], color='navy', linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic')
+plt.legend(loc = 'lower right')
+plt.savefig('roc_test.png')
+plt.show()
+plt.close()
+
+# Confusion matrix
+plt.figure(figsize=(8,8))
+conf_matrix_test = conf_matrix_test
+ax= plt.subplot()
+sns.heatmap(conf_matrix_test, annot=True, fmt='d',ax = ax, cmap = 'Blues')  # annot=True to annotate cells
+
+# labels, title and ticks
+ax.set_xlabel('Predicted labels')
+ax.set_ylabel('True labels')
+ax.set_title('Confusion Matrix')
+ax.xaxis.set_ticklabels(['0', '1'])
+ax.yaxis.set_ticklabels(['0', '1'])
+plt.savefig('confusion_test.png')
+plt.close()
+
+# Save results in a text file
+result_string_test = ('Test, Accuracy: ' + str(accuracy_test)[:7] 
+                     + ', Sensitivity: ' + str(sensitivity_test)[:7] 
+                     + ', Specificity: ' + str(specificity_test)[:7] 
+                     + ', ROC Score: ' + str(roc_score_test)[:7])
+with open('results_test.txt', 'w') as f:
+    f.write(result_string_test)

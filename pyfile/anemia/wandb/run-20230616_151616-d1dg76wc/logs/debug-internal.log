@@ -1,0 +1,1031 @@
+2023-06-16 15:16:16,329 INFO    StreamThr :4103891 [internal.py:wandb_internal():86] W&B internal server running at pid: 4103891, started at: 2023-06-16 15:16:16.328984
+2023-06-16 15:16:16,331 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status
+2023-06-16 15:16:16,333 INFO    WriterThread:4103891 [datastore.py:open_for_write():85] open: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/run-d1dg76wc.wandb
+2023-06-16 15:16:16,336 DEBUG   SenderThread:4103891 [sender.py:send():369] send: header
+2023-06-16 15:16:16,352 DEBUG   SenderThread:4103891 [sender.py:send():369] send: run
+2023-06-16 15:16:16,897 INFO    SenderThread:4103891 [dir_watcher.py:__init__():211] watching files in: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files
+2023-06-16 15:16:16,897 INFO    SenderThread:4103891 [sender.py:_start_run_threads():1100] run started: d1dg76wc with start time 1686896176.328342
+2023-06-16 15:16:16,897 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:16:16,898 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:16:16,910 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: check_version
+2023-06-16 15:16:16,911 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: check_version
+2023-06-16 15:16:16,970 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: run_start
+2023-06-16 15:16:16,979 DEBUG   HandlerThread:4103891 [system_info.py:__init__():31] System info init
+2023-06-16 15:16:16,980 DEBUG   HandlerThread:4103891 [system_info.py:__init__():46] System info init done
+2023-06-16 15:16:16,980 INFO    HandlerThread:4103891 [system_monitor.py:start():181] Starting system monitor
+2023-06-16 15:16:16,980 INFO    SystemMonitor:4103891 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-06-16 15:16:16,981 INFO    HandlerThread:4103891 [system_monitor.py:probe():201] Collecting system info
+2023-06-16 15:16:16,982 INFO    SystemMonitor:4103891 [interfaces.py:start():190] Started cpu monitoring
+2023-06-16 15:16:16,982 INFO    SystemMonitor:4103891 [interfaces.py:start():190] Started disk monitoring
+2023-06-16 15:16:16,983 INFO    SystemMonitor:4103891 [interfaces.py:start():190] Started gpu monitoring
+2023-06-16 15:16:16,985 INFO    SystemMonitor:4103891 [interfaces.py:start():190] Started memory monitoring
+2023-06-16 15:16:16,986 INFO    SystemMonitor:4103891 [interfaces.py:start():190] Started network monitoring
+2023-06-16 15:16:17,031 DEBUG   HandlerThread:4103891 [system_info.py:probe():195] Probing system
+2023-06-16 15:16:17,045 DEBUG   HandlerThread:4103891 [system_info.py:_probe_git():180] Probing git
+2023-06-16 15:16:17,071 DEBUG   HandlerThread:4103891 [system_info.py:_probe_git():188] Probing git done
+2023-06-16 15:16:17,071 DEBUG   HandlerThread:4103891 [system_info.py:probe():240] Probing system done
+2023-06-16 15:16:17,072 DEBUG   HandlerThread:4103891 [system_monitor.py:probe():210] {'os': 'Linux-5.4.0-125-generic-x86_64-with-glibc2.31', 'python': '3.9.16', 'heartbeatAt': '2023-06-16T06:16:17.031964', 'startedAt': '2023-06-16T06:16:16.317035', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/minkyoon/crom/pyfile/anemia/renset50_anemia_mil.py', 'codePath': 'pyfile/anemia/renset50_anemia_mil.py', 'git': {'remote': 'https://github.com/min-program/crohn_endoscopy_resnet_project.git', 'commit': 'bb8bbef5dc464ffb5259e926a185bb4752c7da9a'}, 'email': 'minkyoon97@gmail.com', 'root': '/home/minkyoon/crom', 'host': 'gpu', 'username': 'minkyoon', 'executable': '/home/minkyoon/anaconda3/bin/python', 'cpu_count': 20, 'cpu_count_logical': 40, 'cpu_freq': {'current': 1.9038000000000004, 'min': 1200.0, 'max': 2223.475}, 'cpu_freq_per_core': [{'current': 1.199, 'min': 1200.0, 'max': 3100.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.238, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.366, 'min': 1200.0, 'max': 2201.0}, {'current': 1.3, 'min': 1200.0, 'max': 2201.0}, {'current': 1.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 1.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.208, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 1.303, 'min': 1200.0, 'max': 2201.0}, {'current': 1.3, 'min': 1200.0, 'max': 2201.0}], 'disk': {'total': 97.87200164794922, 'used': 29.548946380615234}, 'gpu': 'Quadro P5000', 'gpu_count': 4, 'gpu_devices': [{'name': 'Quadro P5000', 'memory_total': 17069309952}, {'name': 'Quadro P5000', 'memory_total': 17069309952}, {'name': 'Quadro P5000', 'memory_total': 17069309952}, {'name': 'Quadro P5000', 'memory_total': 17069309952}], 'memory': {'total': 62.778438568115234}}
+2023-06-16 15:16:17,072 INFO    HandlerThread:4103891 [system_monitor.py:probe():211] Finished collecting system info
+2023-06-16 15:16:17,072 INFO    HandlerThread:4103891 [system_monitor.py:probe():214] Publishing system info
+2023-06-16 15:16:17,072 DEBUG   HandlerThread:4103891 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-06-16 15:16:17,073 DEBUG   HandlerThread:4103891 [system_info.py:_save_pip():67] Saving pip packages done
+2023-06-16 15:16:17,073 DEBUG   HandlerThread:4103891 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-06-16 15:16:17,901 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/requirements.txt
+2023-06-16 15:16:17,902 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:16:17,902 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/conda-environment.yaml
+2023-06-16 15:16:21,903 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/conda-environment.yaml
+2023-06-16 15:16:22,378 DEBUG   HandlerThread:4103891 [system_info.py:_save_conda():86] Saving conda packages done
+2023-06-16 15:16:22,379 INFO    HandlerThread:4103891 [system_monitor.py:probe():216] Finished publishing system info
+2023-06-16 15:16:22,386 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:16:22,386 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:16:22,387 DEBUG   SenderThread:4103891 [sender.py:send():369] send: files
+2023-06-16 15:16:22,387 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2023-06-16 15:16:22,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:16:22,398 DEBUG   SenderThread:4103891 [sender.py:send():369] send: telemetry
+2023-06-16 15:16:22,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:16:22,656 DEBUG   SenderThread:4103891 [sender.py:send():369] send: telemetry
+2023-06-16 15:16:22,656 DEBUG   SenderThread:4103891 [sender.py:send():369] send: config
+2023-06-16 15:16:22,657 DEBUG   SenderThread:4103891 [sender.py:send():369] send: config
+2023-06-16 15:16:22,657 DEBUG   SenderThread:4103891 [sender.py:send():369] send: config
+2023-06-16 15:16:22,904 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/output.log
+2023-06-16 15:16:22,904 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-metadata.json
+2023-06-16 15:16:23,053 INFO    wandb-upload_0:4103891 [upload_job.py:push():133] Uploaded file /tmp/tmpg07s8jeywandb/2nyf9fqx-wandb-metadata.json
+2023-06-16 15:16:24,240 DEBUG   SenderThread:4103891 [sender.py:send():369] send: telemetry
+2023-06-16 15:16:24,458 DEBUG   SenderThread:4103891 [sender.py:send():369] send: telemetry
+2023-06-16 15:16:24,870 DEBUG   SenderThread:4103891 [sender.py:send():369] send: telemetry
+2023-06-16 15:16:24,905 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/output.log
+2023-06-16 15:16:27,871 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:16:32,872 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:16:37,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:16:37,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:16:38,600 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:16:43,602 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:16:48,608 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:16:49,917 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/config.yaml
+2023-06-16 15:16:52,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:16:52,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:16:54,609 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:16:59,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:04,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:07,396 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:17:07,397 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:17:09,640 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:14,641 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:16,986 DEBUG   SystemMonitor:4103891 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-06-16 15:17:16,990 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:17:19,992 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:22,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:17:22,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:17:25,604 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:30,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:35,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:36,276 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:17:36,279 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:17:36,279 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:17:36,496 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:17:36,938 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:17:37,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:17:37,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:17:41,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:46,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:46,992 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:17:51,994 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:52,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:17:52,397 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:17:56,386 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:17:56,387 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:17:56,388 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:17:56,388 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:17:56,947 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:17:57,389 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:17:57,406 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:17:57,407 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:17:57,408 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:17:57,410 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:17:57,948 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:18:02,412 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:07,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:18:07,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:18:07,604 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:12,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:16,996 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:18:17,998 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:22,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:18:22,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:18:23,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:28,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:30,670 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:18:30,671 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:18:30,672 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:18:30,672 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:18:30,963 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:18:33,661 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:18:33,662 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:18:33,663 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:18:33,663 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:33,965 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:18:34,433 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:18:37,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:18:37,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:18:39,603 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:44,604 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:46,913 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:18:46,914 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:18:46,914 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:18:46,915 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:18:46,971 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:18:46,997 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:18:49,998 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:18:52,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:18:52,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:18:55,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:00,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:05,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:07,397 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:19:07,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:19:11,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:12,540 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:19:12,542 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:19:12,542 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:19:12,954 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:19:12,983 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:19:16,956 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:17,000 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:19:22,002 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:22,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:19:22,400 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:19:27,614 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:32,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:37,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:19:37,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:19:38,604 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:43,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:47,002 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:19:49,004 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:52,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:19:52,398 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:19:54,594 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:19:59,595 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:01,633 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:20:01,635 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:20:01,635 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:20:02,004 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:20:02,377 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:20:05,379 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:07,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:20:07,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:20:10,596 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:15,597 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:17,005 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:20:21,006 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:22,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:20:22,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:20:26,731 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:31,732 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:36,733 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:37,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:20:37,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:20:42,296 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:20:42,297 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:20:42,298 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:20:42,298 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:42,300 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:20:43,024 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:20:47,007 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:20:48,008 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:52,398 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:20:52,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:20:53,206 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:20:53,207 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:20:53,207 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:20:53,211 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:20:53,556 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:20:54,028 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:20:58,557 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:03,558 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:07,399 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:21:07,399 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:21:08,282 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:21:08,283 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:21:08,283 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:21:08,629 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:21:08,630 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:09,035 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:21:13,631 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:17,010 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:21:19,011 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:22,399 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:21:22,400 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:21:24,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:29,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:34,608 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:37,399 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:21:37,400 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:21:40,604 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:45,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:47,013 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:21:51,015 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:21:52,399 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:21:52,400 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:21:52,536 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:21:52,604 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:21:52,605 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:21:52,605 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:21:53,057 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:21:55,890 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:21:55,891 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:21:55,892 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:21:55,892 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:21:56,059 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:21:56,893 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:01,894 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:06,895 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:07,399 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:22:07,400 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:22:12,614 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:17,014 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:22:18,015 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:22,399 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:22:22,400 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:22:23,613 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:28,614 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:33,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:37,399 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:22:37,400 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:22:39,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:44,534 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:22:44,535 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:22:44,536 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:22:44,536 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:22:45,081 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:22:45,537 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:47,435 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:22:51,437 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:22:52,400 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:22:52,694 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:22:56,904 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:01,905 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:06,906 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:07,400 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:23:07,401 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:23:08,145 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:23:08,147 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:23:08,148 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:23:08,677 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:23:09,093 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:23:12,679 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:17,018 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:23:18,019 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:22,400 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:23:22,401 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:23:23,596 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:28,597 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:33,599 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:37,400 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:23:37,401 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:23:38,608 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:43,609 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:47,022 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:23:49,024 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:51,585 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:23:51,586 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:23:51,586 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:23:52,113 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:23:52,400 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:23:52,845 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:23:52,846 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:23:54,050 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:23:59,051 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:04,052 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:07,400 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:24:07,401 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:24:09,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:14,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:17,023 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:24:20,025 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:22,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:24:22,402 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:24:25,608 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:30,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:35,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:37,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:24:37,402 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:24:37,750 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:24:37,751 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:24:37,752 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:24:37,752 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:24:38,133 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:24:40,754 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:41,107 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:24:41,108 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:24:41,108 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:24:41,109 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:24:41,134 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:24:46,110 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:47,025 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:24:52,027 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:24:52,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:24:52,401 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:24:57,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:02,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:07,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:25:07,403 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:25:07,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:12,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:17,262 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:25:18,263 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:22,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:25:22,402 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:25:23,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:28,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:31,598 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:25:31,599 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:25:31,599 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:25:31,709 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:25:32,156 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:25:33,711 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:37,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:25:37,403 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:25:39,602 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:44,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:47,029 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:25:50,031 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:25:52,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:25:52,539 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:25:55,733 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:00,734 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:05,736 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:07,402 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:26:07,403 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:26:11,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:16,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:18,066 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:26:22,069 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:22,401 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:26:22,402 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:26:26,919 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:26:27,125 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:26:27,125 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:26:27,126 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:27,183 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:26:27,848 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:26:32,850 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:37,402 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:26:37,610 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:26:38,820 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:43,821 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:47,169 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:26:49,172 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:52,402 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:26:52,403 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:26:54,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:26:59,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:04,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:07,403 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:27:07,404 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:27:09,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:14,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:17,325 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:27:20,327 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:22,402 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:27:22,403 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:27:22,518 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:27:22,596 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:27:22,596 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:27:22,896 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:27:23,209 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:27:25,897 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:30,898 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:35,899 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:37,403 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:27:37,403 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:27:41,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:46,616 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:48,065 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:27:52,068 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:27:52,403 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:27:52,404 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:27:57,621 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:02,622 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:07,403 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:28:07,404 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:28:08,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:09,943 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:28:09,944 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:28:09,945 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:28:09,945 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:28:10,231 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:28:13,441 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:28:13,442 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:28:13,442 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:28:13,443 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:28:14,232 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:28:14,443 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:17,040 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:28:20,042 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:22,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:28:22,405 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:28:25,599 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:30,600 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:35,601 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:37,403 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:28:37,404 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:28:40,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:45,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:47,047 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:28:51,050 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:52,403 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:28:52,405 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:28:56,609 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:28:59,735 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:28:59,737 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:28:59,737 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:28:59,873 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:29:00,254 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:29:01,875 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:06,876 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:07,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:29:07,404 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:29:12,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:17,608 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:20,385 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:29:22,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:29:22,405 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:29:22,640 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:27,641 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:30,349 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:29:30,350 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:29:30,350 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:29:30,351 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:29:31,268 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:29:33,352 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:37,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:29:37,404 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:29:38,632 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:43,633 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:47,047 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:29:48,877 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:29:51,249 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:51,250 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:29:51,250 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:29:51,278 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:29:51,675 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:29:52,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:29:52,405 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:29:54,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:29:59,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:04,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:07,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:30:07,405 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:30:09,629 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:14,630 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:17,050 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:30:20,052 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:22,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:30:22,405 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:30:25,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:27,142 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:30:27,144 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:30:27,144 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:30:27,149 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:30:27,295 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:30:30,512 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:30:32,221 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:32,222 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:30:32,223 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:30:32,297 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:30:33,371 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:30:36,372 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:37,405 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:30:37,406 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:30:41,616 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:46,617 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:47,052 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:30:52,054 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:30:52,404 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:30:52,405 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:30:57,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:02,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:07,405 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:31:07,744 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:07,745 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:31:12,954 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:17,057 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:31:17,920 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:31:17,921 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:31:17,921 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:31:17,922 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:31:18,318 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:31:18,923 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:22,405 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:31:22,406 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:31:24,619 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:26,244 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:31:26,245 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:31:26,245 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:31:26,306 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:31:26,321 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:31:29,880 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:31:29,881 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:31:29,882 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:31:29,882 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:31:29,883 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:30,323 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:31:34,884 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:37,405 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:31:37,406 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:31:40,619 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:45,620 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:47,056 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:31:51,058 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:52,405 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:31:52,406 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:31:56,604 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:31:57,683 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:31:57,685 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:31:57,685 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:31:58,182 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:31:58,338 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:32:02,184 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:07,185 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:07,405 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:32:07,406 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:32:12,640 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:17,059 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:32:18,060 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:22,406 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:32:22,407 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:32:23,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:23,907 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:32:23,908 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:32:23,908 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:32:23,909 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:32:24,349 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:32:28,910 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:33,911 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:37,405 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:32:37,834 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:32:39,040 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:44,041 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:44,081 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:32:44,082 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:32:44,082 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:32:44,358 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:32:45,344 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:32:47,059 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:32:49,805 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:32:52,406 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:32:53,078 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:32:55,276 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:00,277 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:05,278 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:07,406 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:33:07,407 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:33:07,560 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:33:07,610 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:33:07,611 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:33:07,612 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:33:08,371 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:33:10,359 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:33:10,361 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:33:10,361 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:33:10,362 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:10,362 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:33:10,372 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:33:14,234 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:33:14,235 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:33:14,235 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:33:14,236 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:33:14,374 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:33:16,236 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:17,062 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:33:22,064 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:22,407 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:33:22,408 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:33:27,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:32,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:37,406 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:33:37,407 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:33:38,602 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:40,967 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:33:40,969 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:33:40,969 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:33:41,345 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:33:41,386 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:33:44,373 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:47,064 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:33:50,066 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:33:52,407 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:33:52,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:33:55,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:00,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:05,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:07,406 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:34:07,407 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:34:10,621 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:15,622 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:17,068 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:34:20,739 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:34:21,074 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:21,075 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:34:21,075 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:34:21,084 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:34:21,404 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:34:22,407 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:34:22,407 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:34:26,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:31,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:36,613 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:37,407 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:34:37,408 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:34:42,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:47,068 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:34:48,070 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:52,407 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:34:52,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:34:53,617 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:34:58,617 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:03,618 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:07,407 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:35:07,408 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:35:09,367 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:35:09,369 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:35:09,369 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:35:09,370 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:09,412 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:35:09,427 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:35:14,414 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:19,415 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:19,548 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:35:22,407 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:35:22,408 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:35:24,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:29,613 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:34,613 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:37,408 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:35:37,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:35:39,616 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:44,616 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:47,073 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:35:50,075 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:35:52,408 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:35:52,410 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:35:54,112 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:35:54,114 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:35:54,114 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:35:54,449 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:35:54,536 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:35:55,890 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:00,891 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:05,892 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:07,408 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:36:07,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:36:11,668 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:16,669 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:17,075 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:36:22,077 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:22,408 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:36:22,408 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:36:27,954 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:32,955 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:37,408 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:36:37,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:36:38,619 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:43,620 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:46,995 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:36:46,996 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:36:46,997 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:36:47,326 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:36:47,327 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:36:47,474 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:36:49,329 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:52,408 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:36:52,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:36:54,616 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:36:59,617 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:04,618 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:07,409 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:37:07,410 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:37:10,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:15,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:17,080 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:37:21,082 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:22,408 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:37:22,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:37:26,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:31,614 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:36,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:37,409 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:37:37,410 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:37:41,515 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:37:41,517 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:37:41,517 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:37:41,748 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:37:41,749 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:42,504 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:37:46,750 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:47,082 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:37:52,084 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:37:52,409 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:37:52,409 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:37:57,614 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:02,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:07,409 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:38:07,410 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:38:08,604 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:13,605 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:17,084 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:38:19,086 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:22,409 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:38:22,847 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:38:25,056 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:27,079 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:38:27,080 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:38:27,080 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:38:27,523 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:38:27,525 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:38:30,525 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:35,526 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:37,409 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:38:37,410 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:38:40,607 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:45,608 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:47,086 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:38:51,089 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:38:52,409 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:38:52,736 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:38:56,940 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:01,942 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:06,943 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:07,410 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:39:07,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:39:12,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:17,089 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:39:18,090 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:20,934 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:39:20,935 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:39:20,935 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:39:21,015 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:39:21,550 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:39:22,410 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:39:22,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:39:23,615 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:28,616 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:33,617 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:37,410 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:39:37,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:39:38,725 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:43,726 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:47,090 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:39:49,092 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:52,410 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:39:52,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:39:54,618 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:39:59,619 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:04,621 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:07,410 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:40:07,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:40:09,623 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:14,624 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:17,092 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:40:20,094 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:22,410 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:40:22,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:40:25,606 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:25,969 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:40:25,971 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:40:25,972 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:40:26,055 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:40:26,581 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:40:31,057 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:36,058 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:37,411 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:40:37,412 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:40:41,618 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:46,619 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:47,094 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:40:52,096 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:40:52,410 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:40:52,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:40:57,619 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:02,620 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:06,672 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:41:06,673 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:41:06,674 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:41:06,675 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:41:07,411 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:41:07,411 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:41:07,600 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:41:08,620 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:13,621 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:17,096 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:41:19,097 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:22,411 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:41:22,714 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:41:24,921 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:27,182 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:41:27,183 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:41:27,184 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:41:27,263 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:41:27,610 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:41:30,265 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:35,266 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:37,412 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:41:37,425 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:41:40,634 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:45,635 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:48,850 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:41:50,852 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:41:52,411 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:41:52,412 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:41:56,620 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:01,621 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:06,622 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:07,411 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:42:07,412 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:42:11,627 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:16,628 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:17,100 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:42:18,794 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:42:18,795 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:42:18,796 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:42:18,879 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:42:19,634 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:42:21,880 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:22,411 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:42:22,412 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:42:27,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:32,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:37,411 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:42:37,412 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:42:37,616 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:42,617 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:47,574 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:42:48,575 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:52,412 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:42:52,412 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:42:53,612 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:42:58,613 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:03,614 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:07,412 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:43:07,413 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:43:08,623 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:13,624 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:16,654 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: partial_history
+2023-06-16 15:43:16,655 DEBUG   SenderThread:4103891 [sender.py:send():369] send: history
+2023-06-16 15:43:16,656 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 15:43:16,656 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:43:16,660 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:43:17,104 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:43:19,106 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:22,412 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:43:22,413 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:43:24,609 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:29,610 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:34,611 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:37,412 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:43:37,413 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:43:39,621 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:41,664 DEBUG   SenderThread:4103891 [sender.py:send():369] send: exit
+2023-06-16 15:43:41,664 INFO    SenderThread:4103891 [sender.py:send_exit():574] handling exit code: 255
+2023-06-16 15:43:41,665 INFO    SenderThread:4103891 [sender.py:send_exit():576] handling runtime: 1644
+2023-06-16 15:43:41,671 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:43:42,295 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:43:42,295 INFO    SenderThread:4103891 [sender.py:send_exit():582] send defer
+2023-06-16 15:43:42,296 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:42,296 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 0
+2023-06-16 15:43:42,297 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:42,297 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 0
+2023-06-16 15:43:42,297 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 1
+2023-06-16 15:43:42,297 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:42,297 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 1
+2023-06-16 15:43:42,298 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:42,298 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 1
+2023-06-16 15:43:42,298 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 2
+2023-06-16 15:43:42,298 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:42,298 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 2
+2023-06-16 15:43:42,298 INFO    HandlerThread:4103891 [system_monitor.py:finish():190] Stopping system monitor
+2023-06-16 15:43:42,299 INFO    HandlerThread:4103891 [interfaces.py:finish():202] Joined cpu monitor
+2023-06-16 15:43:42,299 DEBUG   SystemMonitor:4103891 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-06-16 15:43:42,300 INFO    HandlerThread:4103891 [interfaces.py:finish():202] Joined disk monitor
+2023-06-16 15:43:42,300 DEBUG   SystemMonitor:4103891 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-06-16 15:43:42,991 INFO    HandlerThread:4103891 [interfaces.py:finish():202] Joined gpu monitor
+2023-06-16 15:43:42,991 INFO    HandlerThread:4103891 [interfaces.py:finish():202] Joined memory monitor
+2023-06-16 15:43:42,991 INFO    HandlerThread:4103891 [interfaces.py:finish():202] Joined network monitor
+2023-06-16 15:43:42,992 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-16 15:43:42,993 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:42,993 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 2
+2023-06-16 15:43:42,993 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 3
+2023-06-16 15:43:42,993 DEBUG   SenderThread:4103891 [sender.py:send():369] send: stats
+2023-06-16 15:43:42,993 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:42,994 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: poll_exit
+2023-06-16 15:43:42,994 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 3
+2023-06-16 15:43:42,995 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:42,996 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 3
+2023-06-16 15:43:42,996 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 4
+2023-06-16 15:43:42,996 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:42,996 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 4
+2023-06-16 15:43:42,996 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:42,997 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 4
+2023-06-16 15:43:42,997 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 5
+2023-06-16 15:43:42,997 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:42,997 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 5
+2023-06-16 15:43:42,998 DEBUG   SenderThread:4103891 [sender.py:send():369] send: summary
+2023-06-16 15:43:43,146 INFO    SenderThread:4103891 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:43:43,146 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:43,147 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 5
+2023-06-16 15:43:43,147 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 6
+2023-06-16 15:43:43,147 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:43,147 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 6
+2023-06-16 15:43:43,147 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:43,148 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 6
+2023-06-16 15:43:43,148 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 7
+2023-06-16 15:43:43,148 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:43,148 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:43,148 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 7
+2023-06-16 15:43:43,149 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:43,149 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 7
+2023-06-16 15:43:43,668 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-16 15:43:43,672 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/output.log
+2023-06-16 15:43:43,672 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:43:45,673 INFO    Thread-12 :4103891 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/output.log
+2023-06-16 15:43:46,175 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 8
+2023-06-16 15:43:46,176 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: poll_exit
+2023-06-16 15:43:46,176 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:46,176 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 8
+2023-06-16 15:43:46,177 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:46,177 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 8
+2023-06-16 15:43:46,177 INFO    SenderThread:4103891 [job_builder.py:build():232] Attempting to build job artifact
+2023-06-16 15:43:46,178 INFO    SenderThread:4103891 [job_builder.py:build():256] is repo sourced job
+2023-06-16 15:43:46,182 INFO    SenderThread:4103891 [job_builder.py:build():297] adding wandb-job metadata file
+2023-06-16 15:43:48,290 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 9
+2023-06-16 15:43:48,290 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:48,290 DEBUG   SenderThread:4103891 [sender.py:send():369] send: artifact
+2023-06-16 15:43:48,290 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 9
+2023-06-16 15:43:48,671 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:43:49,739 INFO    wandb-upload_0:4103891 [upload_job.py:push():88] Skipped uploading /home/minkyoon/.local/share/wandb/artifacts/staging/tmpizptxa21
+2023-06-16 15:43:50,501 INFO    wandb-upload_1:4103891 [upload_job.py:push():91] Uploaded file /home/minkyoon/.local/share/wandb/artifacts/staging/tmpv8bduhk6
+2023-06-16 15:43:52,011 INFO    SenderThread:4103891 [sender.py:send_artifact():1450] sent artifact job-https___github.com_min-program_crohn_endoscopy_resnet_project.git_pyfile_anemia_renset50_anemia_mil.py - {'id': 'QXJ0aWZhY3Q6NDg5NDE2MTQ1', 'digest': 'f55097c476773873ed92fec59e55b551', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjc3MTcwMjkz', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDg5Mzc5NDg1', 'versionIndex': 0}}, 'version': 'latest'}
+2023-06-16 15:43:52,012 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:52,012 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:52,012 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 9
+2023-06-16 15:43:52,012 INFO    SenderThread:4103891 [dir_watcher.py:finish():359] shutting down directory watcher
+2023-06-16 15:43:52,176 INFO    SenderThread:4103891 [dir_watcher.py:finish():389] scan: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files
+2023-06-16 15:43:52,177 INFO    SenderThread:4103891 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json wandb-summary.json
+2023-06-16 15:43:52,177 INFO    SenderThread:4103891 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/requirements.txt requirements.txt
+2023-06-16 15:43:52,178 INFO    SenderThread:4103891 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/config.yaml config.yaml
+2023-06-16 15:43:52,187 INFO    SenderThread:4103891 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/conda-environment.yaml conda-environment.yaml
+2023-06-16 15:43:52,188 INFO    SenderThread:4103891 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/output.log output.log
+2023-06-16 15:43:52,194 INFO    SenderThread:4103891 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-metadata.json wandb-metadata.json
+2023-06-16 15:43:52,195 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 10
+2023-06-16 15:43:52,199 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:52,199 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 10
+2023-06-16 15:43:52,204 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:52,205 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 10
+2023-06-16 15:43:52,205 INFO    SenderThread:4103891 [file_pusher.py:finish():159] shutting down file pusher
+2023-06-16 15:43:53,084 INFO    wandb-upload_0:4103891 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/wandb-summary.json
+2023-06-16 15:43:53,674 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:43:57,206 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:43:57,800 INFO    wandb-upload_1:4103891 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/requirements.txt
+2023-06-16 15:43:58,677 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:43:58,703 INFO    wandb-upload_4:4103891 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/output.log
+2023-06-16 15:43:58,793 INFO    wandb-upload_2:4103891 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/config.yaml
+2023-06-16 15:43:59,052 INFO    wandb-upload_3:4103891 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/files/conda-environment.yaml
+2023-06-16 15:43:59,252 INFO    Thread-11 :4103891 [sender.py:transition_state():602] send defer: 11
+2023-06-16 15:43:59,253 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:59,253 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 11
+2023-06-16 15:43:59,254 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:59,254 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 11
+2023-06-16 15:43:59,254 INFO    SenderThread:4103891 [file_pusher.py:join():164] waiting for file pusher
+2023-06-16 15:43:59,254 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 12
+2023-06-16 15:43:59,254 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:43:59,255 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 12
+2023-06-16 15:43:59,255 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:43:59,255 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 12
+2023-06-16 15:44:00,020 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 13
+2023-06-16 15:44:00,020 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:44:00,020 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 13
+2023-06-16 15:44:00,021 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:44:00,021 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 13
+2023-06-16 15:44:00,021 INFO    SenderThread:4103891 [sender.py:transition_state():602] send defer: 14
+2023-06-16 15:44:00,022 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:44:00,022 DEBUG   SenderThread:4103891 [sender.py:send():369] send: final
+2023-06-16 15:44:00,022 INFO    HandlerThread:4103891 [handler.py:handle_request_defer():170] handle defer: 14
+2023-06-16 15:44:00,023 DEBUG   SenderThread:4103891 [sender.py:send():369] send: footer
+2023-06-16 15:44:00,024 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:44:00,024 INFO    SenderThread:4103891 [sender.py:send_request_defer():598] handle sender defer: 14
+2023-06-16 15:44:00,025 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-16 15:44:00,026 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: poll_exit
+2023-06-16 15:44:00,027 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: server_info
+2023-06-16 15:44:00,027 DEBUG   SenderThread:4103891 [sender.py:send_request():396] send_request: server_info
+2023-06-16 15:44:00,032 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: get_summary
+2023-06-16 15:44:00,032 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: sampled_history
+2023-06-16 15:44:00,235 INFO    MainThread:4103891 [wandb_run.py:_footer_history_summary_info():3467] rendering history
+2023-06-16 15:44:00,236 INFO    MainThread:4103891 [wandb_run.py:_footer_history_summary_info():3499] rendering summary
+2023-06-16 15:44:00,236 INFO    MainThread:4103891 [wandb_run.py:_footer_sync_info():3426] logging synced files
+2023-06-16 15:44:00,237 DEBUG   HandlerThread:4103891 [handler.py:handle_request():144] handle_request: shutdown
+2023-06-16 15:44:00,238 INFO    HandlerThread:4103891 [handler.py:finish():854] shutting down handler
+2023-06-16 15:44:01,027 INFO    WriterThread:4103891 [datastore.py:close():298] close: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_151616-d1dg76wc/run-d1dg76wc.wandb
+2023-06-16 15:44:01,235 INFO    SenderThread:4103891 [sender.py:finish():1526] shutting down sender
+2023-06-16 15:44:01,235 INFO    SenderThread:4103891 [file_pusher.py:finish():159] shutting down file pusher
+2023-06-16 15:44:01,236 INFO    SenderThread:4103891 [file_pusher.py:join():164] waiting for file pusher

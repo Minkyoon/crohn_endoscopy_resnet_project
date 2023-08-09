@@ -9,9 +9,11 @@ from torchvision import datasets, transforms
 import torch.utils.data as data
 import pandas as pd
 from torch.utils.data import Dataset
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
 
 # 디바이스 설정 (GPU 사용 가능하면 GPU 사용하도록)
-device = torch.device("cuda:10" )
+device = torch.device("cuda:1" )
 
 random_seed = 2022
 
@@ -28,21 +30,19 @@ torch.backends.cudnn.benchmark = False
 
 
 
-# 데이터를 처리하기 위한 transform을 설정합니다.
-# ToTensor를 사용해 numpy array를 Tensor로 바꿔줍니다.
 transform = transforms.Compose([
-       # np.array를 PIL 이미지로 변환. 일부 변환들은 PIL 이미지에서만 작동합니다.
-    transforms.RandomHorizontalFlip(),   # 50% 확률로 이미지를 수평으로 뒤집습니다.
-    transforms.RandomVerticalFlip(),     # 50% 확률로 이미지를 수직으로 뒤집습니다.
-    transforms.RandomRotation(30),       # -30에서 30도 사이의 각도로 이미지를 회전시킵니다.
+      
+      
     transforms.ToTensor(), 
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]) # PIL 이미지를 PyTorch 텐서로 다시 변환합니다.
-    # 기본적인 정규화. 값들은 일반적으로 사용되는 값입니다. 필요에 따라 조절하실 수 있습니다.
+    transforms.RandomHorizontalFlip(),   
+    transforms.RandomVerticalFlip(),     
+    transforms.RandomRotation(30), 
+    
 ])
 
 transform_valid = transforms.Compose([
     transforms.ToTensor(), 
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])        
+           
     
 ])
 
@@ -62,20 +62,26 @@ class CustomImageDataset(Dataset):
 
         if isinstance(image, tuple):
             image = image[0]
+        if np.isnan(image).any():
+            raise ValueError(f"NaN value found in input image at index {idx}")
             
-        image = (image * 255).astype(np.uint8)
+        
+        
         
         if self.transform:
-            image = Image.fromarray(image)
-            image = self.transform(image)
+           
             
+            image = self.transform(image)
+        
+        # 레이블 데이터를 torch.Tensor로 변환하면서 데이터 타입을 float32로 변경합니다.
+        label = torch.tensor(label).float()    
 
         return image, label
 
 # 사용자 정의 Dataset 클래스를 이용하여 데이터셋을 로드합니다.
-train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/train.csv', transform=transform)
-test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/test.csv', transform=transform_valid)
-valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/valid.csv', transform=transform_valid)
+train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/crp_regression/train.csv', transform=transform)
+test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/crp_regression/test.csv', transform=transform_valid)
+valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/crp_regression/valid.csv', transform=transform_valid)
 
     
 
@@ -140,7 +146,7 @@ config = {
     }
 
 
-class CovidResNet(nn.Module):
+class ResNet(nn.Module):
     """pretrain 된 ResNet을 이
     """
     
@@ -150,7 +156,7 @@ class CovidResNet(nn.Module):
 			base_model : resnet18 / resnet50
 			config: 모델 설정 값
 		"""
-        super(CovidResNet, self).__init__()
+        super(ResNet, self).__init__()
        
         model = models.resnet50(pretrained=True)
         num_ftrs = model.fc.in_features
@@ -177,47 +183,39 @@ class CovidResNet(nn.Module):
 
 
 
-model_image = CovidResNet()
+model_image = ResNet()
 model_image
 
-class Classifier(nn.Sequential):
-    """임베딩 된 feature를 이용해 classificaion
-    """
+class Regression(nn.Module):
     def __init__(self, model_image, **config):
-        """
-        Args:
-            model_image : image emedding 모델
-            config: 모델 설정 값
-        """
-        super(Classifier, self).__init__()
+        super(Regression, self).__init__()
 
-        self.model_image = model_image # image 임베딩 모델
+        self.model_image = model_image
+        self.input_dim = model_image.num_ftrs
+        self.dropout = nn.Dropout(0.5)
 
-        self.input_dim = model_image.num_ftrs # image feature 사이즈
-        self.dropout = nn.Dropout(0.5) # dropout 적용
+        self.hidden_dims = config['cls_hidden_dims']
+        layer_size = len(self.hidden_dims) + 1
+        dims = [self.input_dim] + self.hidden_dims + [1] # 출력 노드를 1개로 설정
 
-        self.hidden_dims = config['cls_hidden_dims'] # classifier hidden dimensions
-        layer_size = len(self.hidden_dims) + 1 # hidden layer 개수
-        dims = [self.input_dim] + self.hidden_dims + [2] 
-
-        self.predictor = nn.ModuleList([nn.Linear(dims[i], dims[i+1]) for i in range(layer_size)]) # classifer layers 
+        self.predictor = nn.ModuleList([nn.Linear(dims[i], dims[i+1]) for i in range(layer_size)])
 
     def forward(self, v):
-        # Drug/protein 임베딩
-        v_i = self.model_image(v) # batch_size x hidden_dim 
-
+        v_i = self.model_image(v)
         for i, l in enumerate(self.predictor):
             if i == (len(self.predictor)-1):
-                # If last layer,
+                # If last layer, do not apply activation function
                 v_i = l(v_i)
             else:
-                # If Not last layer, dropout과 ReLU 적용
+                # If Not last layer, apply dropout and ReLU
                 v_i = F.relu(self.dropout(l(v_i)))
+        return v_i.squeeze()
 
-        return v_i
+model = Regression(model_image, **config)
 
-model = Classifier(model_image, **config)
-model
+
+
+
 
 
 
@@ -225,30 +223,37 @@ model
 
 ### 모델 학습을 위한 설정
 """
-
+import copy
+from prettytable import PrettyTable
+from time import time
 
 
 # 학습 진행에 필요한 hyperparameter 
 
-learning_rate = 0.0001
+learning_rate = 0.00001
 train_epoch   = 100
 
 # optimizer 
 
-opt     = torch.optim.Adam(model.parameters(), lr = learning_rate)
-loss_fn = torch.nn.CrossEntropyLoss()
+# optimizer
+opt = torch.optim.Adam(model.parameters(), lr = learning_rate)
+# loss function
+class MAPELoss(torch.nn.Module):
+    def __init__(self):
+        super().__init__()
+    def forward(self, y_pred, y_true):
+        loss = torch.mean(torch.abs((y_true - y_pred) / (y_true + 1e-8))) * 100
+        return loss
 
-import copy
-from prettytable import PrettyTable
-from time import time
-from sklearn.metrics import classification_report, roc_auc_score, roc_curve, confusion_matrix
 
-"""### 모델 학습 진횅"""
+#loss_fn = MAPELoss()
+loss_fn = torch.nn.L1Loss()
+
 
 loss_history_train = []
 loss_history_val = []
 
-max_acc = 0
+min_loss = float('inf')
 
 # 모델 GPU 메모리에 올리기
 model = model.to(device)
@@ -259,12 +264,11 @@ model_best = copy.deepcopy(model)
 # 결과 정리를 위한 PrettyTable
 valid_metric_record = []
 valid_metric_header = ["# epoch"] 
-valid_metric_header.extend(["Accuracy", "sensitivity", "specificity", "roc_score"])
+valid_metric_header.extend(["MSE", "MAE", "R2 Score"])
 table = PrettyTable(valid_metric_header)
 
 float2str = lambda x:'%0.4f'%x # float 소숫점 4자리까지만 str로 바꾸기 
 
-x
 for epo in range(train_epoch):
     # Model training 
     model.train()
@@ -277,34 +281,38 @@ for epo in range(train_epoch):
     # Mini-batch 학습 
     for i, (v_i, label) in enumerate(train_loader):
         # input data gpu에 올리기 
-        v_i = v_i.float().to(device) 
+        v_i = v_i.float().to(device)
+        label = label.float().to(device) 
         # forward-pass
+        
+        if torch.isnan(label).any() :
+            print('NaN train value in input data')
         output = model(v_i) 
+        output = output.view(-1)
 
         # 미리 정의한 손실함수(MSE)로 손실(loss) 계산 
-        loss = loss_fn(output, label.to(device))
+        loss = loss_fn(output, label)
+        
+        # Check if loss is NaN
+        if torch.isnan(loss):
+            print('NaN train value in loss')
 
         # 각 iteration 마다 loss 기록 
+        epoch_train_loss += loss.item()
+        n_batches_train += 1
         
-        
-        
-        
-  
-
         # gradient 초기화
         opt.zero_grad()
         # back propagation
         loss.backward()
         # parameter update
         opt.step()
-        epoch_train_loss += loss.item()
-        n_batches_train += 1
     loss_history_train.append(epoch_train_loss / n_batches_train)
+
     # gradient tracking X
     with torch.set_grad_enabled(False):
         
         y_pred = []
-        y_score = []
         y_label = []
         # model validation
         model.eval()
@@ -312,73 +320,70 @@ for epo in range(train_epoch):
         for i, (v_i, label) in enumerate(valid_loader):
             # validation 입력 데이터 gpu에 올리기
             v_i = v_i.float().to(device)
+            label = label.float().to(device)
+            
+            # Check if v_i or label contains NaNs
+            if torch.isnan(v_i).any() or torch.isnan(label).any():
+                print('NaN value in input data')
 
             # forward-pass
             output = model(v_i)
+            
+            # Check if the network parameters contain NaNs
+            for param in model.parameters():
+                if torch.isnan(param).any():
+                    print('NaN value in network parameters')
+
 
             # 미리 정의한 손실함수(MSE)로 손실(loss) 계산 
-            loss = loss_fn(output, label.to(device))
+            loss = loss_fn(output, label)
+            # Check if loss is NaN
+            if torch.isnan(loss):
+                print('NaN value in loss')
 
             # 각 iteration 마다 loss 기록 
-            
+            epoch_val_loss += loss.item()
+            n_batches_val += 1
 
-            pred = output.argmax(dim=1, keepdim=True)
-            score = nn.Softmax(dim = 1)(output)[:,1]
-
-            # 예측값, 참값 cpu로 옮기고 numpy 형으로 변환
-            pred = pred.cpu().numpy()
-            score = score.cpu().numpy()
+            # 예측값, 참값 cpu로 올리고 numpy 형으로 변환
+            output = output.detach().cpu().numpy()
             label = label.cpu().numpy()
 
             # 예측값, 참값 기록하기
             y_label = y_label + label.flatten().tolist()
-            y_pred = y_pred + pred.flatten().tolist()
-            y_score = y_score + score.flatten().tolist()
-            epoch_val_loss += loss.item()
-            n_batches_val += 1
+            y_pred = y_pred + output.flatten().tolist()
+        
+        
         loss_history_val.append(epoch_val_loss / n_batches_val)
     
-    # metric 계산
-    classification_metrics = classification_report(y_label, y_pred,
-                        target_names = ['0', '1'],
-                        output_dict= True)
-    
-    # sensitivity is the recall of the positive class
-    sensitivity = classification_metrics['0']['recall']
-    # specificity is the recall of the negative class 
-    specificity = classification_metrics['1']['recall']
-    # accuracy
-    accuracy = classification_metrics['accuracy']
-    # confusion matrix
-    conf_matrix = confusion_matrix(y_label, y_pred)
-    # roc score
-    roc_score = roc_auc_score(y_label, y_score)
+    # 회귀 성능 지표 계산
+    print(np.isnan(y_label).any())
+    print(np.isnan(y_pred).any())
+    mse = mean_squared_error(y_label, y_pred)
+    mae = mean_absolute_error(y_label, y_pred)
+    r2 = r2_score(y_label, y_pred)
 
     # 계산한 metric 합치기
-    lst = ["epoch " + str(epo)] + list(map(float2str,[accuracy, sensitivity, specificity, roc_score]))
+    lst = ["epoch " + str(epo)] + list(map(float2str,[mse, mae, r2]))
 
     # 각 epoch 마다 결과값 pretty table에 기록
     table.add_row(lst)
     valid_metric_record.append(lst)
     
     # mse 기준으로 best model 업데이트
-    if accuracy > max_acc:
+    if mse < min_loss:
         # best model deepcopy 
-        # model_best = copy.deepcopy(model)
-
         best_model_wts = copy.deepcopy(model.state_dict())
-        # max MSE 업데이트 
-        max_acc = accuracy
-
-    
+        # min MSE 업데이트 
+        min_loss = mse
 
     # 각 epoch 마다 결과 출력 
-    print('Validation at Epoch '+ str(epo + 1) + ' , Accuracy: ' + str(accuracy)[:7] + ' , sensitivity: '\
-						 + str(sensitivity)[:7] + ', specificity: ' + str(f"{specificity}") +' , roc_score: '+str(roc_score)[:7])
+    print('Validation at Epoch '+ str(epo + 1) + ' , MSE: ' + str(mse)[:7] + ' , MAE: '\
+						 + str(mae)[:7] + ', R2 Score: ' + str(r2)[:7])
 
-best_model = model.load_state_dict(best_model_wts)
 model_best.load_state_dict(best_model_wts)
-torch.save(model_best, '/home/minkyoon/crom/pyfile/relapse/resnet50_epoch100.pt')
+torch.save(model_best, 'resnet_regression3.pt')
+
 import matplotlib.pyplot as plt
 
 # 학습 곡선 그리기
@@ -391,13 +396,14 @@ def plot_loss_curve(loss_history_train, loss_history_val, save_path):
     plt.legend()
     plt.grid(True)
     plt.savefig(save_path)  # 이미지 저장
+    plt.close()
     
     
 # ... training code ...
 
 # 학습이 끝난 후에 학습 곡선을 그립니다.
 # 이미지 저장 경로 설정
-save_path = 'loss_curve.png'  # 원하는 경로와 파일명으로 변경하세요.
+save_path = 'loss_curve3.png'  # 원하는 경로와 파일명으로 변경하세요.
 plot_loss_curve(loss_history_train, loss_history_val, save_path)
 
 # """# 모델 테스트 (model testing)"""
@@ -412,86 +418,46 @@ for i, (v_i, label) in enumerate(test_loader):
 
 # # 테스트 진행
 
-# model = model_best
+model = torch.load('resnet_regression3.pt')
+model.eval()
 
 y_pred = []
 y_label = []
-y_score = []
 
-
-
-model = torch.load('/home/minkyoon/crom/pyfile/relapse/resnet50_epoch100.pt')
-model.eval()
 for i, (v_i, label) in enumerate(test_loader):
     # input data gpu에 올리기 
     v_i = v_i.float().to(device)
+    label = label.float().to(device)
 
     with torch.set_grad_enabled(False):
         # forward-pass
         output = model(v_i)
 
         # 미리 정의한 손실함수(MSE)로 손실(loss) 계산 
-        loss = loss_fn(output, label.to(device))
+        loss = loss_fn(output, label)
 
         # 각 iteration 마다 loss 기록 
 
-        pred = output.argmax(dim=1, keepdim=True)
-        score = nn.Softmax(dim = 1)(output)[:,1]
-
-        # 예측값, 참값 cpu로 옮기고 numpy 형으로 변환
-        pred = pred.cpu().numpy()
-        score = score.cpu().numpy()
+        # 예측값, 참값 cpu로 옮기고 numpy 형으로 변환
+        output = output.detach().cpu().numpy()
         label = label.cpu().numpy()
 
     # 예측값, 참값 기록하기
     y_label = y_label + label.flatten().tolist()
-    y_pred = y_pred + pred.flatten().tolist()
-    y_score = y_score + score.flatten().tolist()
+    y_pred = y_pred + output.flatten().tolist()
 
-# # metric 계산
-classification_metrics = classification_report(y_label, y_pred,
-                    target_names = ['0', '1'],
-                    output_dict= True)
-# sensitivity is the recall of the positive class
-sensitivity = classification_metrics['0']['recall']
-# specificity is the recall of the negative class 
-specificity = classification_metrics['1']['recall']
-# accuracy
-accuracy = classification_metrics['accuracy']
-# confusion matrix
-conf_matrix = confusion_matrix(y_label, y_pred)
-# roc score
-roc_score = roc_auc_score(y_label, y_score)
+# 회귀 성능 지표 계산
+mse = mean_squared_error(y_label, y_pred)
+mae = mean_absolute_error(y_label, y_pred)
+r2 = r2_score(y_label, y_pred)
 
-# 각 epoch 마다 결과 출력 
+print('Validation, MSE: ' + str(mse)[:7] + ', MAE: ' 
+      + str(mae)[:7] + ', R2 Score: ' + str(r2)[:7])
 
-
-print('Validation, Accuracy: ' + str(accuracy)[:7] + ', Sensitivity: ' 
-      + str(sensitivity)[:7] + ', Specificity: ' + str(f"{specificity}")[:7] 
-      + ', ROC Score: ' + str(roc_score)[:7])
-
-# """### 테스트 결과 시각화"""
-
-# plot the roc curve    
-fpr, tpr, _ = roc_curve(y_label, y_score)
-plt.plot(fpr, tpr, label = "Area under ROC = {:.4f}".format(roc_score))
-plt.legend(loc = 'best')
-plt.xlabel('False Positive Rate')
-plt.ylabel('True Positive Rate')
-plt.savefig('roc.png')
-plt.show()
-
-import seaborn as sns
-
-conf_matrix = conf_matrix
-ax= plt.subplot()
-sns.heatmap(conf_matrix, annot=True, fmt='d',ax = ax, cmap = 'Blues'); #annot=True to annotate cells
-
-# labels, title and ticks
-ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels'); 
-ax.set_title('Confusion Matrix'); 
-ax.xaxis.set_ticklabels(['0', '1']); ax.yaxis.set_ticklabels(['0', '1']);
-plt.savefig('confusition_anemia.png')
-
+# 결과 저장
+result_string = ('Validation, MSE: ' + str(mse)[:7] + ', MAE: ' 
+      + str(mae)[:7] + ', R2 Score: ' + str(r2)[:7])
+with open('results3.txt', 'w') as f:
+    f.write(result_string)
 
 

@@ -1,6 +1,6 @@
 
 
-# %%
+
 
 import pandas as pd
 
@@ -35,7 +35,7 @@ label1=group_data
 ## 라벨 0부터 옮기자!
 import shutil
 import os
-
+##
 
 for i in label0['accession_number']:
     try:

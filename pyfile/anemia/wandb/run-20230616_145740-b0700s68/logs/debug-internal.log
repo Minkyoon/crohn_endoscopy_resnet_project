@@ -1,0 +1,261 @@
+2023-06-16 14:57:40,089 INFO    StreamThr :3743846 [internal.py:wandb_internal():86] W&B internal server running at pid: 3743846, started at: 2023-06-16 14:57:40.088408
+2023-06-16 14:57:40,105 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status
+2023-06-16 14:57:40,107 INFO    WriterThread:3743846 [datastore.py:open_for_write():85] open: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/run-b0700s68.wandb
+2023-06-16 14:57:40,107 DEBUG   SenderThread:3743846 [sender.py:send():369] send: header
+2023-06-16 14:57:41,936 DEBUG   SenderThread:3743846 [sender.py:send():369] send: run
+2023-06-16 14:57:42,471 INFO    SenderThread:3743846 [dir_watcher.py:__init__():211] watching files in: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files
+2023-06-16 14:57:42,472 INFO    SenderThread:3743846 [sender.py:_start_run_threads():1100] run started: b0700s68 with start time 1686895060.089152
+2023-06-16 14:57:42,472 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: summary_record
+2023-06-16 14:57:42,472 INFO    SenderThread:3743846 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 14:57:42,482 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: check_version
+2023-06-16 14:57:42,483 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: check_version
+2023-06-16 14:57:42,545 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: run_start
+2023-06-16 14:57:42,555 DEBUG   HandlerThread:3743846 [system_info.py:__init__():31] System info init
+2023-06-16 14:57:42,555 DEBUG   HandlerThread:3743846 [system_info.py:__init__():46] System info init done
+2023-06-16 14:57:42,555 INFO    HandlerThread:3743846 [system_monitor.py:start():181] Starting system monitor
+2023-06-16 14:57:42,556 INFO    SystemMonitor:3743846 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-06-16 14:57:42,556 INFO    HandlerThread:3743846 [system_monitor.py:probe():201] Collecting system info
+2023-06-16 14:57:42,557 INFO    SystemMonitor:3743846 [interfaces.py:start():190] Started cpu monitoring
+2023-06-16 14:57:42,558 INFO    SystemMonitor:3743846 [interfaces.py:start():190] Started disk monitoring
+2023-06-16 14:57:42,559 INFO    SystemMonitor:3743846 [interfaces.py:start():190] Started gpu monitoring
+2023-06-16 14:57:42,560 INFO    SystemMonitor:3743846 [interfaces.py:start():190] Started memory monitoring
+2023-06-16 14:57:42,560 INFO    SystemMonitor:3743846 [interfaces.py:start():190] Started network monitoring
+2023-06-16 14:57:42,610 DEBUG   HandlerThread:3743846 [system_info.py:probe():195] Probing system
+2023-06-16 14:57:42,626 DEBUG   HandlerThread:3743846 [system_info.py:_probe_git():180] Probing git
+2023-06-16 14:57:42,653 DEBUG   HandlerThread:3743846 [system_info.py:_probe_git():188] Probing git done
+2023-06-16 14:57:42,653 DEBUG   HandlerThread:3743846 [system_info.py:probe():240] Probing system done
+2023-06-16 14:57:42,653 DEBUG   HandlerThread:3743846 [system_monitor.py:probe():210] {'os': 'Linux-5.4.0-125-generic-x86_64-with-glibc2.31', 'python': '3.9.16', 'heartbeatAt': '2023-06-16T05:57:42.611023', 'startedAt': '2023-06-16T05:57:40.077215', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/minkyoon/crom/pyfile/anemia/renset50_anemia_mil.py', 'codePath': 'pyfile/anemia/renset50_anemia_mil.py', 'git': {'remote': 'https://github.com/min-program/crohn_endoscopy_resnet_project.git', 'commit': 'bb8bbef5dc464ffb5259e926a185bb4752c7da9a'}, 'email': 'minkyoon97@gmail.com', 'root': '/home/minkyoon/crom', 'host': 'gpu', 'username': 'minkyoon', 'executable': '/home/minkyoon/anaconda3/bin/python', 'cpu_count': 20, 'cpu_count_logical': 40, 'cpu_freq': {'current': 2.1327749999999988, 'min': 1200.0, 'max': 2223.475}, 'cpu_freq_per_core': [{'current': 2.401, 'min': 1200.0, 'max': 3100.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.402, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.399, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.2, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 1.435, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}, {'current': 2.199, 'min': 1200.0, 'max': 2201.0}], 'disk': {'total': 97.87200164794922, 'used': 29.548316955566406}, 'gpu': 'Quadro P5000', 'gpu_count': 4, 'gpu_devices': [{'name': 'Quadro P5000', 'memory_total': 17069309952}, {'name': 'Quadro P5000', 'memory_total': 17069309952}, {'name': 'Quadro P5000', 'memory_total': 17069309952}, {'name': 'Quadro P5000', 'memory_total': 17069309952}], 'memory': {'total': 62.778438568115234}}
+2023-06-16 14:57:42,654 INFO    HandlerThread:3743846 [system_monitor.py:probe():211] Finished collecting system info
+2023-06-16 14:57:42,654 INFO    HandlerThread:3743846 [system_monitor.py:probe():214] Publishing system info
+2023-06-16 14:57:42,654 DEBUG   HandlerThread:3743846 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-06-16 14:57:42,655 DEBUG   HandlerThread:3743846 [system_info.py:_save_pip():67] Saving pip packages done
+2023-06-16 14:57:42,655 DEBUG   HandlerThread:3743846 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-06-16 14:57:43,474 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/conda-environment.yaml
+2023-06-16 14:57:43,475 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/wandb-summary.json
+2023-06-16 14:57:43,475 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/requirements.txt
+2023-06-16 14:58:42,561 DEBUG   SystemMonitor:3743846 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-06-16 15:00:02,520 DEBUG   HandlerThread:3743846 [system_info.py:_save_conda():86] Saving conda packages done
+2023-06-16 15:00:02,522 INFO    HandlerThread:3743846 [system_monitor.py:probe():216] Finished publishing system info
+2023-06-16 15:00:02,532 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,532 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,533 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,534 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,534 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,534 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,534 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,534 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,534 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,534 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,535 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,535 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-16 15:00:02,535 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,537 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,537 DEBUG   SenderThread:3743846 [sender.py:send():369] send: telemetry
+2023-06-16 15:00:02,538 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,538 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/conda-environment.yaml
+2023-06-16 15:00:02,538 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: stop_status
+2023-06-16 15:00:02,539 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,540 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/wandb-metadata.json
+2023-06-16 15:00:02,544 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,545 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,546 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,546 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,546 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,546 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,546 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,547 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,547 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,547 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,547 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,548 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,548 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,548 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,548 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,548 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,549 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,549 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,549 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,549 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,549 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,550 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,550 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,550 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,550 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,550 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,550 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,551 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,551 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,551 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,551 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,551 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,552 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,552 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,552 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,552 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,552 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,552 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,553 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:02,582 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:02,743 DEBUG   SenderThread:3743846 [sender.py:send():369] send: telemetry
+2023-06-16 15:00:02,744 DEBUG   SenderThread:3743846 [sender.py:send():369] send: config
+2023-06-16 15:00:02,744 DEBUG   SenderThread:3743846 [sender.py:send():369] send: config
+2023-06-16 15:00:02,744 DEBUG   SenderThread:3743846 [sender.py:send():369] send: config
+2023-06-16 15:00:02,744 DEBUG   SenderThread:3743846 [sender.py:send():369] send: stats
+2023-06-16 15:00:02,745 DEBUG   SenderThread:3743846 [sender.py:send():369] send: stats
+2023-06-16 15:00:02,748 DEBUG   SenderThread:3743846 [sender.py:send():369] send: stats
+2023-06-16 15:00:02,749 DEBUG   SenderThread:3743846 [sender.py:send():369] send: files
+2023-06-16 15:00:02,749 INFO    SenderThread:3743846 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2023-06-16 15:00:03,618 INFO    wandb-upload_0:3743846 [upload_job.py:push():133] Uploaded file /tmp/tmp2e90syx1wandb/ibvjd9pr-wandb-metadata.json
+2023-06-16 15:00:03,845 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_created():272] file/dir created: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/output.log
+2023-06-16 15:00:04,845 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/output.log
+2023-06-16 15:00:05,752 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:07,583 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:10,758 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:12,574 DEBUG   SenderThread:3743846 [sender.py:send():369] send: stats
+2023-06-16 15:00:12,584 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:12,849 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/config.yaml
+2023-06-16 15:00:17,576 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:17,585 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:17,988 DEBUG   SenderThread:3743846 [sender.py:send():369] send: exit
+2023-06-16 15:00:17,988 INFO    SenderThread:3743846 [sender.py:send_exit():574] handling exit code: 255
+2023-06-16 15:00:17,989 INFO    SenderThread:3743846 [sender.py:send_exit():576] handling runtime: 155
+2023-06-16 15:00:18,048 INFO    SenderThread:3743846 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:00:18,048 INFO    SenderThread:3743846 [sender.py:send_exit():582] send defer
+2023-06-16 15:00:18,049 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:18,049 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 0
+2023-06-16 15:00:18,050 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:18,050 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 0
+2023-06-16 15:00:18,050 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 1
+2023-06-16 15:00:18,050 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:18,050 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 1
+2023-06-16 15:00:18,050 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:18,050 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 1
+2023-06-16 15:00:18,051 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 2
+2023-06-16 15:00:18,051 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:18,051 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 2
+2023-06-16 15:00:18,051 INFO    HandlerThread:3743846 [system_monitor.py:finish():190] Stopping system monitor
+2023-06-16 15:00:18,051 DEBUG   SystemMonitor:3743846 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-06-16 15:00:18,053 DEBUG   SystemMonitor:3743846 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-06-16 15:00:18,055 INFO    HandlerThread:3743846 [interfaces.py:finish():202] Joined cpu monitor
+2023-06-16 15:00:18,055 INFO    HandlerThread:3743846 [interfaces.py:finish():202] Joined disk monitor
+2023-06-16 15:00:18,852 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/wandb-summary.json
+2023-06-16 15:00:18,934 INFO    HandlerThread:3743846 [interfaces.py:finish():202] Joined gpu monitor
+2023-06-16 15:00:18,935 INFO    HandlerThread:3743846 [interfaces.py:finish():202] Joined memory monitor
+2023-06-16 15:00:18,935 INFO    HandlerThread:3743846 [interfaces.py:finish():202] Joined network monitor
+2023-06-16 15:00:18,936 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:18,936 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 2
+2023-06-16 15:00:18,936 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 3
+2023-06-16 15:00:18,937 DEBUG   SenderThread:3743846 [sender.py:send():369] send: stats
+2023-06-16 15:00:18,937 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:18,938 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 3
+2023-06-16 15:00:18,938 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:18,938 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 3
+2023-06-16 15:00:18,939 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 4
+2023-06-16 15:00:18,939 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:18,939 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 4
+2023-06-16 15:00:18,939 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:18,939 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 4
+2023-06-16 15:00:18,939 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 5
+2023-06-16 15:00:18,939 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:18,939 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 5
+2023-06-16 15:00:18,940 DEBUG   SenderThread:3743846 [sender.py:send():369] send: summary
+2023-06-16 15:00:18,988 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-16 15:00:19,158 INFO    SenderThread:3743846 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-06-16 15:00:19,159 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:19,159 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 5
+2023-06-16 15:00:19,159 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 6
+2023-06-16 15:00:19,159 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: poll_exit
+2023-06-16 15:00:19,159 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:19,160 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 6
+2023-06-16 15:00:19,160 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:19,161 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 6
+2023-06-16 15:00:19,161 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 7
+2023-06-16 15:00:19,161 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:19,161 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:19,161 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 7
+2023-06-16 15:00:19,161 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:19,161 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 7
+2023-06-16 15:00:19,852 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/wandb-summary.json
+2023-06-16 15:00:19,989 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-16 15:00:20,853 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/output.log
+2023-06-16 15:00:22,490 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 8
+2023-06-16 15:00:22,491 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: poll_exit
+2023-06-16 15:00:22,491 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:22,491 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 8
+2023-06-16 15:00:22,492 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:22,492 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 8
+2023-06-16 15:00:22,492 INFO    SenderThread:3743846 [job_builder.py:build():232] Attempting to build job artifact
+2023-06-16 15:00:22,493 INFO    SenderThread:3743846 [job_builder.py:build():256] is repo sourced job
+2023-06-16 15:00:22,497 INFO    SenderThread:3743846 [job_builder.py:build():297] adding wandb-job metadata file
+2023-06-16 15:00:22,854 INFO    Thread-12 :3743846 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/output.log
+2023-06-16 15:00:24,992 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:26,998 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 9
+2023-06-16 15:00:26,999 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:26,999 DEBUG   SenderThread:3743846 [sender.py:send():369] send: artifact
+2023-06-16 15:00:26,999 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 9
+2023-06-16 15:00:27,004 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:29,995 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:31,090 INFO    wandb-upload_1:3743846 [upload_job.py:push():91] Uploaded file /home/minkyoon/.local/share/wandb/artifacts/staging/tmpbmaav_ir
+2023-06-16 15:00:31,376 INFO    wandb-upload_0:3743846 [upload_job.py:push():91] Uploaded file /home/minkyoon/.local/share/wandb/artifacts/staging/tmpzcdhr8nm
+2023-06-16 15:00:32,945 INFO    SenderThread:3743846 [sender.py:send_artifact():1450] sent artifact job-https___github.com_min-program_crohn_endoscopy_resnet_project.git_pyfile_anemia_renset50_anemia_mil.py - {'id': 'QXJ0aWZhY3Q6NDg5Mzc5NDg1', 'digest': '367cc5f226ec23b050613d172dc7b33d', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjc3MTcwMjkz', 'latestArtifact': None}, 'version': 'latest'}
+2023-06-16 15:00:32,946 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:32,946 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: status_report
+2023-06-16 15:00:32,946 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 9
+2023-06-16 15:00:32,946 INFO    SenderThread:3743846 [dir_watcher.py:finish():359] shutting down directory watcher
+2023-06-16 15:00:33,857 INFO    SenderThread:3743846 [dir_watcher.py:finish():389] scan: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files
+2023-06-16 15:00:33,857 INFO    SenderThread:3743846 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/wandb-summary.json wandb-summary.json
+2023-06-16 15:00:33,858 INFO    SenderThread:3743846 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/requirements.txt requirements.txt
+2023-06-16 15:00:33,858 INFO    SenderThread:3743846 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/config.yaml config.yaml
+2023-06-16 15:00:33,858 INFO    SenderThread:3743846 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/conda-environment.yaml conda-environment.yaml
+2023-06-16 15:00:33,859 INFO    SenderThread:3743846 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/output.log output.log
+2023-06-16 15:00:33,876 INFO    SenderThread:3743846 [dir_watcher.py:finish():403] scan save: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/wandb-metadata.json wandb-metadata.json
+2023-06-16 15:00:33,881 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 10
+2023-06-16 15:00:33,882 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:33,887 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 10
+2023-06-16 15:00:33,888 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:33,888 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 10
+2023-06-16 15:00:33,888 INFO    SenderThread:3743846 [file_pusher.py:finish():159] shutting down file pusher
+2023-06-16 15:00:34,499 INFO    wandb-upload_1:3743846 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/wandb-summary.json
+2023-06-16 15:00:34,618 INFO    wandb-upload_3:3743846 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/conda-environment.yaml
+2023-06-16 15:00:34,645 INFO    wandb-upload_4:3743846 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/output.log
+2023-06-16 15:00:34,662 INFO    wandb-upload_2:3743846 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/config.yaml
+2023-06-16 15:00:34,704 INFO    wandb-upload_0:3743846 [upload_job.py:push():133] Uploaded file /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/files/requirements.txt
+2023-06-16 15:00:34,905 INFO    Thread-11 :3743846 [sender.py:transition_state():602] send defer: 11
+2023-06-16 15:00:34,905 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:34,906 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 11
+2023-06-16 15:00:34,906 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:34,906 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 11
+2023-06-16 15:00:34,906 INFO    SenderThread:3743846 [file_pusher.py:join():164] waiting for file pusher
+2023-06-16 15:00:34,907 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 12
+2023-06-16 15:00:34,907 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:34,907 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 12
+2023-06-16 15:00:34,907 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:34,907 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 12
+2023-06-16 15:00:34,998 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-16 15:00:35,152 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 13
+2023-06-16 15:00:35,153 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:35,153 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 13
+2023-06-16 15:00:35,153 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:35,153 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 13
+2023-06-16 15:00:35,154 INFO    SenderThread:3743846 [sender.py:transition_state():602] send defer: 14
+2023-06-16 15:00:35,154 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: defer
+2023-06-16 15:00:35,154 DEBUG   SenderThread:3743846 [sender.py:send():369] send: final
+2023-06-16 15:00:35,154 INFO    HandlerThread:3743846 [handler.py:handle_request_defer():170] handle defer: 14
+2023-06-16 15:00:35,155 DEBUG   SenderThread:3743846 [sender.py:send():369] send: footer
+2023-06-16 15:00:35,155 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: defer
+2023-06-16 15:00:35,155 INFO    SenderThread:3743846 [sender.py:send_request_defer():598] handle sender defer: 14
+2023-06-16 15:00:35,156 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-16 15:00:35,157 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: poll_exit
+2023-06-16 15:00:35,158 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: server_info
+2023-06-16 15:00:35,158 DEBUG   SenderThread:3743846 [sender.py:send_request():396] send_request: server_info
+2023-06-16 15:00:35,162 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: get_summary
+2023-06-16 15:00:35,162 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: sampled_history
+2023-06-16 15:00:35,364 INFO    MainThread:3743846 [wandb_run.py:_footer_history_summary_info():3467] rendering history
+2023-06-16 15:00:35,365 INFO    MainThread:3743846 [wandb_run.py:_footer_history_summary_info():3499] rendering summary
+2023-06-16 15:00:35,365 INFO    MainThread:3743846 [wandb_run.py:_footer_sync_info():3426] logging synced files
+2023-06-16 15:00:35,367 DEBUG   HandlerThread:3743846 [handler.py:handle_request():144] handle_request: shutdown
+2023-06-16 15:00:35,367 INFO    HandlerThread:3743846 [handler.py:finish():854] shutting down handler
+2023-06-16 15:00:36,158 INFO    WriterThread:3743846 [datastore.py:close():298] close: /home/minkyoon/crom/pyfile/anemia/wandb/run-20230616_145740-b0700s68/run-b0700s68.wandb
+2023-06-16 15:00:36,364 INFO    SenderThread:3743846 [sender.py:finish():1526] shutting down sender
+2023-06-16 15:00:36,364 INFO    SenderThread:3743846 [file_pusher.py:finish():159] shutting down file pusher
+2023-06-16 15:00:36,365 INFO    SenderThread:3743846 [file_pusher.py:join():164] waiting for file pusher

@@ -11,7 +11,7 @@ import pandas as pd
 from torch.utils.data import Dataset
 
 # 디바이스 설정 (GPU 사용 가능하면 GPU 사용하도록)
-device = torch.device("cuda:2" )
+device = torch.device("cuda:3" )
 
 random_seed = 2022
 
@@ -75,9 +75,9 @@ class CustomImageDataset(Dataset):
         return image, label
 
 # 사용자 정의 Dataset 클래스를 이용하여 데이터셋을 로드합니다.
-train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/train.csv', transform=transform)
-test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/test.csv', transform=transform_valid)
-valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/valid.csv', transform=transform_valid)
+train_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/train1.csv', transform=transform)
+test_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/test1.csv', transform=transform_valid)
+valid_dataset = CustomImageDataset(csv_file='/home/minkyoon/crom/pyfile/relapse/valid1.csv', transform=transform_valid)
 
     
 
@@ -398,7 +398,7 @@ def plot_loss_curve(loss_history_train, loss_history_val, save_path):
 
 # 학습이 끝난 후에 학습 곡선을 그립니다.
 # 이미지 저장 경로 설정
-save_path = 'loss_curve3.png'  # 원하는 경로와 파일명으로 변경하세요.
+save_path = 'loss_curve4.png'  # 원하는 경로와 파일명으로 변경하세요.
 plot_loss_curve(loss_history_train, loss_history_val, save_path)
 
 # """# 모델 테스트 (model testing)"""
@@ -479,7 +479,7 @@ plt.plot(fpr, tpr, label = "Area under ROC = {:.4f}".format(roc_score))
 plt.legend(loc = 'best')
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.savefig('roc3.png')
+plt.savefig('roc4.png')
 plt.show()
 plt.close()
 
@@ -493,13 +493,13 @@ sns.heatmap(conf_matrix, annot=True, fmt='d',ax = ax, cmap = 'Blues'); #annot=Tr
 ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels'); 
 ax.set_title('Confusion Matrix'); 
 ax.xaxis.set_ticklabels(['0', '1']); ax.yaxis.set_ticklabels(['0', '1']);
-plt.savefig('confusition_anemia3.png')
+plt.savefig('confusition_anemia4.png')
 plt.close()
 
 result_string = ('Validation, Accuracy: ' + str(accuracy)[:7] + ', Sensitivity: ' 
       + str(sensitivity)[:7] + ', Specificity: ' + str(f"{specificity}")[:7] 
       + ', ROC Score: ' + str(roc_score)[:7])
-with open('results3.txt', 'w') as f:
+with open('results4.txt', 'w') as f:
     f.write(result_string)
 
 

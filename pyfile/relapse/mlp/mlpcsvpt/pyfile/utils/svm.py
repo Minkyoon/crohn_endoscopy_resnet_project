@@ -4,6 +4,10 @@ import numpy as np
 import topk.functional as F
 
 from topk.utils import detect_large
+from topk.polynomial.sp import log_sum_exp, LogSumExp
+
+from topk.utils import delta, split
+
 
 
 class _SVMLoss(nn.Module):
@@ -77,6 +81,98 @@ class MaxTopkSVM(_SVMLoss):
     def get_losses(self):
         self.F = F.Topk_Hard_SVM(self.labels, self.k, self.alpha)
 
+#### 오류가 뜨는 코드
+# class SmoothTop1SVM(_SVMLoss):
+#     def __init__(self, n_classes, alpha=None, tau=1.):
+#         super(SmoothTop1SVM, self).__init__(n_classes=n_classes,
+#                                             alpha=alpha)
+#         self.tau = tau
+#         self.thresh = 1e3
+#         self.get_losses()
+
+#     def forward(self, x, y):
+#         smooth, hard = detect_large(x, 1, self.tau, self.thresh)
+
+#         loss = 0
+#         if smooth.data.sum():
+#             x_s, y_s = x[smooth], y[smooth]
+#             x_s = x_s.view(-1, x.size(1))
+#             loss += self.F_s(x_s, y_s).sum() / x.size(0)
+#         if hard.data.sum():
+#             x_h, y_h = x[hard], y[hard]
+#             x_h = x_h.view(-1, x.size(1))
+#             loss += self.F_h(x_h, y_h).sum() / x.size(0)
+
+#         return loss
+
+#     def Top1_Smooth_SVM(self, labels, tau, alpha=1.):
+#         def fun(x, y):
+#             # add loss term and subtract ground truth score
+#             x = x + delta(y, labels, alpha) - x.gather(1, y[:, None])
+#             # compute loss
+#             loss = tau * log_sum_exp(x / tau)
+#             return loss
+#         return fun
+
+#     def Top1_Hard_SVM(self, labels, alpha=1.):
+#         def fun(x, y):
+#             # max oracle
+#             max_, _ = (x + delta(y, labels, alpha)).max(1)
+#             # subtract ground truth
+#             loss = max_ - x.gather(1, y[:, None]).squeeze()
+#             return loss
+#         return fun
+
+#     def get_losses(self):
+#         self.F_h = self.Top1_Hard_SVM(self.labels, self.alpha)
+#         self.F_s = self.Top1_Smooth_SVM(self.labels, self.tau, self.alpha)
+# 오류가 뜨는 코드를 직렬화
+# class SmoothTop1SVM(_SVMLoss):
+#     def __init__(self, n_classes, alpha=None, tau=1.):
+#         super(SmoothTop1SVM, self).__init__(n_classes=n_classes,
+#                                             alpha=alpha)
+#         self.tau = tau
+#         self.thresh = 1e3
+#         self.get_losses()
+
+#     def forward(self, x, y):
+#         smooth, hard = detect_large(x, 1, self.tau, self.thresh)
+
+#         loss = 0
+#         if smooth.data.sum():
+#             x_s, y_s = x[smooth], y[smooth]
+#             x_s = x_s.view(-1, x.size(1))
+#             loss += self.F_s(x_s, y_s).sum() / x.size(0)
+#         if hard.data.sum():
+#             x_h, y_h = x[hard], y[hard]
+#             x_h = x_h.view(-1, x.size(1))
+#             loss += self.F_h(x_h, y_h).sum() / x.size(0)
+
+#         return loss
+
+#     def Top1_Smooth_SVM(self, x, y, labels, tau, alpha=1.):
+#         # add loss term and subtract ground truth score
+#         y = y.to(x.device)
+#         labels = labels.to(x.device)
+        
+#         x = x + delta(y, labels, alpha) - x.gather(1, y[:, None])
+#         # compute loss
+#         loss = tau * log_sum_exp(x / tau)
+#         return loss
+
+#     def Top1_Hard_SVM(self, x, y, labels, alpha=1.):
+#         # max oracle
+#         y = y.to(x.device)
+#         labels = labels.to(x.device)
+#         max_, _ = (x + delta(y, labels, alpha)).max(1)
+#         # subtract ground truth
+#         loss = max_ - x.gather(1, y[:, None]).squeeze()
+#         return loss
+
+#     def get_losses(self):
+#         self.F_h = lambda x, y: self.Top1_Hard_SVM(x, y, self.labels, self.alpha)
+#         self.F_s = lambda x, y: self.Top1_Smooth_SVM(x, y, self.labels, self.tau, self.alpha)
+
 
 class SmoothTop1SVM(_SVMLoss):
     def __init__(self, n_classes, alpha=None, tau=1.):
@@ -93,17 +189,42 @@ class SmoothTop1SVM(_SVMLoss):
         if smooth.data.sum():
             x_s, y_s = x[smooth], y[smooth]
             x_s = x_s.view(-1, x.size(1))
-            loss += self.F_s(x_s, y_s).sum() / x.size(0)
+            loss += self.calculate_F_s(x_s, y_s).sum() / x.size(0)
         if hard.data.sum():
             x_h, y_h = x[hard], y[hard]
             x_h = x_h.view(-1, x.size(1))
-            loss += self.F_h(x_h, y_h).sum() / x.size(0)
+            loss += self.calculate_F_h(x_h, y_h).sum() / x.size(0)
 
         return loss
+    def Top1_Smooth_SVM(self, x, y, labels, tau, alpha=1.):
+        # add loss term and subtract ground truth score
+        y = y.to(x.device)
+        labels = labels.to(x.device)
+        
+        x = x + delta(y, labels, alpha) - x.gather(1, y[:, None])
+        # compute loss
+        loss = tau * log_sum_exp(x / tau)
+        return loss
+
+    def Top1_Hard_SVM(self, x, y, labels, alpha=1.):
+        # max oracle
+        y = y.to(x.device)
+        labels = labels.to(x.device)
+        max_, _ = (x + delta(y, labels, alpha)).max(1)
+        # subtract ground truth
+        loss = max_ - x.gather(1, y[:, None]).squeeze()
+        return loss
+
+    def calculate_F_s(self, x, y):
+        return self.Top1_Smooth_SVM(x, y, self.labels, self.tau, self.alpha)
+
+    def calculate_F_h(self, x, y):
+        return self.Top1_Hard_SVM(x, y, self.labels, self.alpha)
 
     def get_losses(self):
-        self.F_h = F.Top1_Hard_SVM(self.labels, self.alpha)
-        self.F_s = F.Top1_Smooth_SVM(self.labels, self.tau, self.alpha)
+        pass
+
+
 
 
 class SmoothTopkSVM(_SVMLoss):

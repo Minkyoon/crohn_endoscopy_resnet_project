@@ -1,0 +1,1 @@
+Validation, MSE: 204.069, MAE: 7.89794, R2 Score: -0.2273
